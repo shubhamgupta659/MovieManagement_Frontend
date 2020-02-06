@@ -1,0 +1,23 @@
+<div class="col-md-12 user-container">
+  <h2 class="text-center">Edit Movie</h2>
+  <form [formGroup]="editForm" (ngSubmit)="onSubmit()">
+    <div class="hidden">
+      <input type="number" formControlName="movieId" placeholder="id" name="movieId" class="form-control" id="movieId" disabled>
+    </div>
+    <div class="form-group">
+      <label for="movieName">Movie Name:</label>
+      <input type="text" formControlName="movieName" placeholder="Movie Name" name="movieName" class="form-control" id="movieName">
+    </div>
+
+    <div class="form-group">
+      <label for="movieRating">Movie Rating:</label>
+      <input type="text" formControlName="rating" placeholder="Rating" name="movieRating" class="form-control" id="movieRating">
+    </div>
+
+    <div class="form-group">
+      <label for="movieLanguage">Movie Language:</label>
+      <input formControlName="language" placeholder="Language" name="movieLanguage" class="form-control" id="movieLanguage">
+    </div>
+    <button class="btn btn-success">Update Movie</button>
+  </form>
+</div>

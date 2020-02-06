@@ -1,0 +1,77 @@
+<div class="row">
+
+  <div class="col-md-6 signup-container">
+<form class="form-horizontal" [formGroup]="userForm" (ngSubmit)="onSubmit()">
+  <div class="panel panel-primary">
+    <div class="panel-heading">
+      <h3 class="panel-title">Register User</h3>
+    </div>
+    <div class="panel-body">
+      <div class="form-group">
+        <label class="col-sm-4 control-label" for="firstName">First Name</label>
+        <div class="col-sm-12">
+          <input id="firstName" type="text" class="form-control" formControlName="firstName" required>
+          <div *ngFor="let validation of validationMessages.firstName">
+            <div class="error" *ngIf="userForm.controls['firstName'].hasError(validation.type) && (userForm.get('firstName').dirty || userForm.get('firstName').touched)">{{validation.message}}</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="col-sm-4 control-label" for="lastName">Last Name</label>
+        <div class="col-sm-12">
+          <input id="lastName" type="text" class="form-control" formControlName="lastName" required>
+          <div *ngFor="let validation of validationMessages.lastName">
+              <div class="error" *ngIf="userForm.controls['lastName'].hasError(validation.type) && (userForm.get('lastName').dirty || userForm.get('lastName').touched)">{{validation.message}}</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="col-sm-2 control-label" for="email">Email</label>
+        <div class="col-sm-12">
+          <input id="email" type="email" class="form-control" formControlName="email" required>
+          <div *ngFor="let validation of validationMessages.email">
+              <div class="error" *ngIf="userForm.controls['email'].hasError(validation.type) && (userForm.get('email').dirty || userForm.get('email').touched)">{{validation.message}}</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="col-sm-2 control-label" for="username">UserName</label>
+        <div class="col-sm-12">
+          <input id="username" type="text" class="form-control" formControlName="username" required>
+          <div *ngFor="let validation of validationMessages.username">
+              <div class="error" *ngIf="userForm.controls['username'].hasError(validation.type) && (userForm.get('username').dirty || userForm.get('username').touched)">{{validation.message}}</div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="form-group">
+        <label class="col-sm-2 control-label" for="password">Password</label>
+        <div class="col-sm-12">
+          <input id="password" type="password" class="form-control" formControlName="password" required>
+          <div *ngFor="let validation of validationMessages.password">
+              <div class="error" *ngIf="userForm.controls['password'].hasError(validation.type) && (userForm.get('password').dirty || userForm.get('password').touched)">{{validation.message}}</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="col-sm-4 control-label" for="confirmPassword">Confirm Password</label>
+        <div class="col-sm-12">
+          <input id="confirmPassword" type="password" class="form-control" formControlName="confirmPassword" required>
+          <div *ngFor="let validation of validationMessages.confirmPassword">
+              <div class="error" *ngIf="userForm.controls['confirmPassword'].hasError(validation.type) && (userForm.get('confirmPassword').dirty || userForm.get('confirmPassword').touched)">{{validation.message}}</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <div class="panel-footer">
+      <button class="btn btn-success" type="submit" [disabled]="!userForm.valid" >Register</button>
+    </div>
+  </div>
+</form>
+</div>
+</div>
