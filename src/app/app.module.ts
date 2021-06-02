@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { MatInputModule, MatPaginatorModule, MatProgressSpinnerModule, MatSortModule, MatTableModule } from "@angular/material";
+import { MatInputModule, MatFormFieldModule , MatPaginatorModule, MatProgressSpinnerModule, MatSortModule, MatTableModule } from "@angular/material";
 import { MaterialModule } from "./material/material.module";
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -41,7 +41,7 @@ import { EmployeeListComponent } from './employee-list/employee-list.component';
     HttpClientModule,
     BrowserAnimationsModule,
     MaterialModule,
-    MatInputModule, MatPaginatorModule, MatProgressSpinnerModule, MatSortModule, MatTableModule
+    MatInputModule, MatFormFieldModule, MatPaginatorModule, MatProgressSpinnerModule, MatSortModule, MatTableModule
   ],
   providers: [EmployeeService,{provide: HTTP_INTERCEPTORS, useClass: CustomInterceptor, multi: true },],
   bootstrap: [AppComponent]

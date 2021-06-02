@@ -1,5 +1,6 @@
 table {
     width: 100%;
+
   }
 
   th.mat-sort-header-sorted {
@@ -11,4 +12,12 @@ table {
   }
   .left-text {
     text-align: left;
+  }
+
+  .demo-row-is-clicked {
+    font-weight: bold;
+  }
+
+  .employee-detail{
+    margin: 20px; 
   }

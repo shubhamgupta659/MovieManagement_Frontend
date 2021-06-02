@@ -12,9 +12,10 @@ import { Employee } from '../model/employee.model';
 
 export class EmployeeListComponent implements OnInit {
   
-  displayedColumns: string[] = ['fullName', 'email', 'mobile', 'city', 'gender', 'department'];
+  displayedColumns: string[] = ['fullName', 'email', 'mobile', 'city', 'gender', 'department','details','update','delete'];
   employeeData: any;
   public dataSource : MatTableDataSource<Employee>;
+  clickedRows = new Set<Employee>();
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
 
@@ -30,4 +31,18 @@ export class EmployeeListComponent implements OnInit {
       });
     }
 
+    public doFilter = (value: string) => {
+      this.dataSource.filter = value.trim().toLocaleLowerCase();
+    }
+    
+    public redirectToDetails = (id: string) => {
+    
+    }
+    public redirectToUpdate = (id: string) => {
+      
+    }
+    public redirectToDelete = (id: string) => {
+      
+    }
+    
 }
