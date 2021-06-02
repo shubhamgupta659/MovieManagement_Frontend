@@ -35,3 +35,5 @@ mat-radio-group mat-radio-button{
 .button-row button{
     margin: 5px;
 }
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
