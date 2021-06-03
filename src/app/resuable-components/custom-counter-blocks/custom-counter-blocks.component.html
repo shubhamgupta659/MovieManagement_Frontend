@@ -1,0 +1,15 @@
+<div class = "row">
+  <div class="tab" *ngFor="let tab of tabsdata">
+    <div class="box" [style.background]= "tab.color" [style.color]="'white'" (click)="tabclick(tab.name)">
+      <div class="tab-less-power">
+        <div class="row">
+          <button mat-icon-button color="white">
+            <mat-icon class="mat-18">{{tab.icon}}</mat-icon>
+          </button>
+          <div class="tabname">{{tab.name}}</div>
+        </div>
+        <div class="tabcount">{{tab.count}}</div>
+      </div>
+    </div>
+  </div>
+</div>

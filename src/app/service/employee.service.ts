@@ -18,8 +18,8 @@ export class EmployeeService {
     mobile: new FormControl('', [Validators.required, Validators.minLength(8)]),
     city: new FormControl(''),
     gender: new FormControl('1'),
-    department: new FormControl(0),
-    hireDate: new FormControl(''),
+    department: new FormControl(null),
+    hireDate: new FormControl(new Date()),
     permanent: new FormControl(false)
   });
 
@@ -31,8 +31,8 @@ export class EmployeeService {
       mobile: '',
       city: '',
       gender: '1',
-      department: 0,
-      hireDate: '',
+      department: null,
+      hireDate: new Date(),
       permanent: false
     });
   }

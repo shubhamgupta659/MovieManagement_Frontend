@@ -1,0 +1,9 @@
+.clear-back{
+    float : right;
+    margin-right: 20px;
+    padding: 10px;
+    display: flex;
+}
+.clear-back-button{
+    padding-right: 10px;
+}

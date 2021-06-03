@@ -10,3 +10,8 @@ export class Employee {
     hireDate: String;
     permanent: boolean;
   }
+
+export interface EmployeeResolved{
+  employee :any;
+  error?: any;
+}

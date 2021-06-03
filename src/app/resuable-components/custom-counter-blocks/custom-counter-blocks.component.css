@@ -1,0 +1,61 @@
+.row {
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    height:auto;
+    border-radius:3px;
+    margin-right:0px;
+    margin-left: 0px;
+}
+.box{
+    margin-left: 10px;
+}
+
+.tab>div{
+    margin:5px;
+    min-width:150px;
+    border-radius:3px;
+}
+
+.tabcount{
+    background: rgba(7,7,7,.3);
+    text-align:center;
+    border-radius:3px;
+}
+
+.tabname{
+    font-size: 13px;
+    display:flex;
+    text-align: right;
+    justify-content: right;
+    flex-wrap: wrap;
+    flex-direction: row-reverse;
+    height:50px;
+    width:100px;
+}
+
+.selectable-color{
+    color:rgb(0,0,0);
+}
+.button-icon{
+    background-color: transparent;
+    height:34px;
+    font-size:20px;
+    border: none;
+}
+
+.tabicon{
+    margin: -22px 0px 0px -6px;
+    color: #ffffff;
+}
+
+disabled{
+    color: #ffffff;
+    cursor: not-allowed;
+}
+
+.box:hover{
+    box-shadow: 3px 3px 3px 0px rgba(0,0,0,3), 3px 3px 3px 0px rgba(68,63,63,.35);
+    cursor:pointer;
+}

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { HttpRequestService } from '../service/http-request.service';
-import {Movie} from "../model/movie.model";
+import { HttpRequestService } from '../../service/http-request.service';
+import {Movie} from "../../model/movie.model";
 
 @Component({
   selector: 'app-movie-list',
@@ -11,6 +11,11 @@ import {Movie} from "../model/movie.model";
 export class MovieListComponent implements OnInit {
 
   movies: any;
+  public tabs = [
+    {name: 'HINDI', count : 6, color:'rgb(224,57,6)', icon:'developer_mode'},
+    {name: 'ENGLISH', count : 2, color:'rgb(224,2,119)', icon:'supervised_user_circle'},
+    {name: 'TELUGU', count : 1, color:'rgb(173,7,85)', icon:'account_balance'}
+  ]
 
   constructor(private router: Router, private apiService: HttpRequestService) { }
 

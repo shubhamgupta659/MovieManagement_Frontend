@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { MatInputModule, MatFormFieldModule , MatPaginatorModule, MatProgressSpinnerModule, MatSortModule, MatTableModule } from "@angular/material";
+import { MatInputModule, MatFormFieldModule , MatPaginatorModule, MatProgressSpinnerModule, MatSortModule, MatTableModule, MatTabsModule } from "@angular/material";
 import { MaterialModule } from "./material/material.module";
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -11,14 +11,18 @@ import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { LogoutComponent } from './logout/logout.component';
 import { CustomInterceptor } from './interceptor/custom.interceptor';
-import { MovieListComponent } from './movie-list/movie-list.component';
-import { AddMovieComponent } from './add-movie/add-movie.component';
-import { EditMovieComponent } from './edit-movie/edit-movie.component';
+import { MovieListComponent } from './movie/movie-list/movie-list.component';
+import { AddMovieComponent } from './movie/add-movie/add-movie.component';
+import { EditMovieComponent } from './movie/edit-movie/edit-movie.component';
 import { SignupComponent } from './signup/signup.component';
-import { EmployeeComponent } from './employee/employee.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { EmployeeService } from './service/employee.service';
-import { EmployeeListComponent } from './employee-list/employee-list.component';
+import { EmployeeListComponent } from './employee/employee-list/employee-list.component';
+import { EditEmployeeComponent } from './employee/edit-employee/edit-employee.component';
+import { AddEmployeeComponent } from './employee/add-employee/add-employee.component';
+import { DepartmentMapPipe } from './custom-pipes/department-mapper';
+import { CustomCounterBlocksComponent } from './resuable-components/custom-counter-blocks/custom-counter-blocks.component';
+
 
 @NgModule({
   declarations: [
@@ -31,8 +35,11 @@ import { EmployeeListComponent } from './employee-list/employee-list.component';
     AddMovieComponent,
     EditMovieComponent,
     SignupComponent,
-    EmployeeComponent,
-    EmployeeListComponent
+    AddEmployeeComponent,
+    EditEmployeeComponent,
+    EmployeeListComponent,
+    DepartmentMapPipe,
+    CustomCounterBlocksComponent
   ],
   imports: [
     BrowserModule,
@@ -41,7 +48,7 @@ import { EmployeeListComponent } from './employee-list/employee-list.component';
     HttpClientModule,
     BrowserAnimationsModule,
     MaterialModule,
-    MatInputModule, MatFormFieldModule, MatPaginatorModule, MatProgressSpinnerModule, MatSortModule, MatTableModule
+    MatInputModule, MatFormFieldModule, MatPaginatorModule, MatProgressSpinnerModule, MatSortModule, MatTableModule, MatTabsModule
   ],
   providers: [EmployeeService,{provide: HTTP_INTERCEPTORS, useClass: CustomInterceptor, multi: true },],
   bootstrap: [AppComponent]

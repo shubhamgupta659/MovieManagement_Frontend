@@ -8,8 +8,7 @@
   <ul class="nav navbar-nav">
     <li><a *ngIf="apiService.isUserLoggedIn()" routerLink="/viewMovie" class="nav-link">Movie List</a></li>
     <li><a *ngIf="apiService.isUserLoggedIn()" routerLink="/addMovie" class="nav-link">Add Movie</a></li>
-    <li><a *ngIf="apiService.isUserLoggedIn()" routerLink="/addemployee" class="nav-link">Add Employee</a></li>
-    <li><a *ngIf="apiService.isUserLoggedIn()" routerLink="/viewemployee" class="nav-link">Employee List</a></li>
+    <li><a *ngIf="apiService.isUserLoggedIn()" routerLink="/viewEmployee" class="nav-link">Employee</a></li>
   </ul>
   <ul class="nav navbar-nav navbar-right">
     <li><a *ngIf="!apiService.isUserLoggedIn()" routerLink="/signup" class="nav-link">SignUp</a></li>

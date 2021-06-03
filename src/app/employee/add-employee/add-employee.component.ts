@@ -1,15 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
-import { EmployeeService } from '../service/employee.service';
-import { NotificationService } from '../service/notification.service';
+import { EmployeeService } from '../../service/employee.service';
+import { NotificationService } from '../../service/notification.service';
 
 @Component({
-  selector: 'app-employee',
-  templateUrl: './employee.component.html',
-  styleUrls: ['./employee.component.css']
+  selector: 'add-employee',
+  templateUrl: './add-employee.component.html',
+  styleUrls: ['./add-employee.component.css']
 })
-export class EmployeeComponent implements OnInit {
+export class AddEmployeeComponent implements OnInit {
 
   constructor(private service: EmployeeService, private notificationService: NotificationService,private router: Router) { }
 
@@ -19,6 +19,8 @@ export class EmployeeComponent implements OnInit {
     { id: 3, value: 'ACCOUNTS' }];
 
   ngOnInit() {
+    this.service.form.reset();
+    this.service.initializeFormGroup();
   }
 
   onClear() {
@@ -27,12 +29,11 @@ export class EmployeeComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log(this.service.form.value);
     this.service.addEmployee(this.service.form.value).subscribe(data => {
       this.service.form.reset();
       this.service.initializeFormGroup();
       this.notificationService.success('Employee Added successfully');
-      this.router.navigate(['/viewemployee']);
+      this.router.navigate(['/viewEmployee']);
     });
   }
 }
