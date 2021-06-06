@@ -39,9 +39,9 @@ export class EditEmployeeComponent implements OnInit {
     });
   }
 
-  compareFn(object1: any, object2: any) {
-    return object1 && object2 && object1.id == object2.id;
-}
+//   compareFn(object1: any, object2: any) {
+//     return object1 && object2 && object1.id == object2.id;
+// }
 
   public onEditClear() {
     this.service.form.reset();

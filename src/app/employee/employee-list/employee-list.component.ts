@@ -19,7 +19,7 @@ export class EmployeeListComponent implements OnInit {
     {name: 'HR', count : 2, color:'rgb(224,2,119)', icon:'supervised_user_circle'},
     {name: 'ACCOUNTS', count : 1, color:'rgb(173,7,85)', icon:'account_balance'}
   ]
-
+  childProp :String;
   displayedColumns: string[] = ['fullName', 'email', 'mobile', 'city', 'gender', 'department','hireDate','permanent','update','delete'];
   employeeData: any;
   public dataSource : MatTableDataSource<Employee>;
@@ -38,8 +38,17 @@ export class EmployeeListComponent implements OnInit {
       this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.sort;
       });
+      this.service.getCountsByDepartment().subscribe(
+        list => {
+        this.setTabData(list);
+        });
     }
 
+    public setTabData(list:any){
+      this.tabs[0].count = list[0][1];
+      this.tabs[1].count = list[1][1];
+      this.tabs[2].count = list[2][1];
+    }
     public doFilter = (value: string) => {
       this.dataSource.filter = value.trim().toLocaleLowerCase();
     }
@@ -71,7 +80,7 @@ export class EmployeeListComponent implements OnInit {
 
     public tabClick(module:any){
       this.selectedModule =module;
-      this.dataSource.filter = this.selectedModule.trim().toLocaleLowerCase();
+      //this.dataSource.filter = this.selectedModule.trim().toLocaleLowerCase();
     }
     
 }

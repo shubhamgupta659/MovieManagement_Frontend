@@ -58,4 +58,8 @@ export class EmployeeService {
   deleteEmployee(id: number) {
     return this.http.delete(this.baseUrl + 'employee/removeEmployee/' + id );
   }
+
+  getCountsByDepartment() {
+    return this.http.get(this.baseUrl + 'employee/countByDepartment');
+  }
 }

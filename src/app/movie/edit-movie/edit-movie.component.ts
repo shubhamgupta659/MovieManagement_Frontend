@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { HttpRequestService } from '../../service/http-request.service';
 import { Movie } from '../../model/movie.model';
+import { SharedDataService } from 'src/app/service/shared-data.service';
 
 @Component({
   selector: 'app-edit-movie',
@@ -13,23 +14,24 @@ export class EditMovieComponent implements OnInit {
 
   movie: Movie;
   editForm: FormGroup;
-
-  constructor(private formBuilder: FormBuilder,private router: Router, private apiService: HttpRequestService) { }
+  selectedMessage:any;
+  constructor(private formBuilder: FormBuilder,private router: Router, private apiService: HttpRequestService,private sharedDataService : SharedDataService) { }
 
   ngOnInit() {
-    let movieId = window.sessionStorage.getItem("editMovieId");
-    if(!movieId) {
-      alert("Invalid action.")
-      this.router.navigate(['']);
-      return;
-    }
+    //let movieId = window.sessionStorage.getItem("editMovieId");
+    // if(!movieId) {
+    //   alert("Invalid action.")
+    //   this.router.navigate(['']);
+    //   return;
+    // }
     this.editForm = this.formBuilder.group({
       movieId: [],
       movieName: ['', Validators.required],
       rating: ['', Validators.required],
       language: ['', Validators.required]
     });
-    this.apiService.getMovieById(+movieId)
+    this.sharedDataService.currentMessage.subscribe(message => (this.selectedMessage= message));
+    this.apiService.getMovieById(+this.selectedMessage)
       .subscribe( data => {
         this.editForm.setValue(data);
       });

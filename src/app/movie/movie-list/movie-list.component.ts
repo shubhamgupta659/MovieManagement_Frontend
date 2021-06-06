@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { HttpRequestService } from '../../service/http-request.service';
 import {Movie} from "../../model/movie.model";
+import { SharedDataService } from 'src/app/service/shared-data.service';
 
 @Component({
   selector: 'app-movie-list',
@@ -17,7 +18,7 @@ export class MovieListComponent implements OnInit {
     {name: 'TELUGU', count : 1, color:'rgb(173,7,85)', icon:'account_balance'}
   ]
 
-  constructor(private router: Router, private apiService: HttpRequestService) { }
+  constructor(private router: Router, private apiService: HttpRequestService, private sharedDataService : SharedDataService) { }
 
   ngOnInit() {
     if(!window.sessionStorage.getItem('token')) {
@@ -40,6 +41,7 @@ export class MovieListComponent implements OnInit {
   editMovie(movie: Movie): void {
     window.sessionStorage.removeItem("editMovieId");
     window.sessionStorage.setItem("editMovieId", movie.movieId.toString());
+    this.sharedDataService.changeMessage(movie.movieId.toString());
     this.router.navigate(['editMovie']);
   };
 
