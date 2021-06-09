@@ -3,6 +3,7 @@ import { AuthenticationService } from '../service/authentication.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { HttpParams } from '@angular/common/http';
 import { Router } from '@angular/router';
+import jwt_decode from 'jwt-decode';
 
 @Component({
   selector: 'app-login',
@@ -25,7 +26,10 @@ export class LoginComponent implements OnInit {
       .set('grant_type', 'password');
 
     this.apiService.login(body.toString()).subscribe(data => {
+      console.log(this.getDecodedAccessToken(JSON.parse(JSON.stringify(data)).access_token));
       window.sessionStorage.setItem('token', JSON.stringify(data));
+      window.sessionStorage.setItem('user_name', this.getDecodedAccessToken(JSON.parse(JSON.stringify(data)).access_token).user_name);
+      window.sessionStorage.setItem('authorities', this.getDecodedAccessToken(JSON.parse(JSON.stringify(data)).access_token).authorities);
       this.router.navigate(['']);
     }, error => {
         alert(error)
@@ -34,10 +38,21 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {
     window.sessionStorage.removeItem('token');
+    window.sessionStorage.removeItem('user_name');
+    window.sessionStorage.removeItem('authorities');
     this.loginForm = this.formBuilder.group({
       username: ['', Validators.compose([Validators.required])],
       password: ['', Validators.required]
     });
+  }
+
+  getDecodedAccessToken(token: string): any {
+    try{
+        return jwt_decode(token);
+    }
+    catch(Error){
+        return null;
+    }
   }
 
 }

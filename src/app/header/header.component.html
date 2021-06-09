@@ -1,21 +1,28 @@
-<header>
-  <nav class ="navbar navbar-expand-md navbar-dark bg-dark">
-      <div class="container-fluid">
-      <div class="navbar-header">
-  <div><a href="https://www.imdb.com/" class="navbar-brand">Movie Management</a></div>
-  </div>
-  
-  <ul class="nav navbar-nav">
-    <li><a *ngIf="apiService.isUserLoggedIn()" routerLink="/viewMovie" class="nav-link">Movie List</a></li>
-    <li><a *ngIf="apiService.isUserLoggedIn()" routerLink="/addMovie" class="nav-link">Add Movie</a></li>
-    <li><a *ngIf="apiService.isUserLoggedIn()" routerLink="/viewEmployee" class="nav-link">Employee</a></li>
-  </ul>
-  <ul class="nav navbar-nav navbar-right">
-    <li><a *ngIf="!apiService.isUserLoggedIn()" routerLink="/signup" class="nav-link">SignUp</a></li>
-    <li><a *ngIf="!apiService.isUserLoggedIn()" routerLink="/login" class="nav-link">Login</a></li>
-    <li><a *ngIf="apiService.isUserLoggedIn()" routerLink="/logout" class="nav-link">LogOut</a></li>
-  </ul>
-  </div>
-  </nav>
-  
-  </header>
+ <mat-toolbar color="primary">
+    <mat-toolbar-row class="navlist">
+      <button mat-icon-button>
+        <mat-icon (click)="sidenav.toggle()">menu</mat-icon>
+      </button>
+      <h1>Angular</h1>
+      <span class="menu-spacer"></span>
+      <div class= "movie">
+        <button mat-button *ngIf="apiService.isUserLoggedIn()" [matMenuTriggerFor]="moviemenu">Movie Management</button>
+        <mat-menu #moviemenu="matMenu" x-position="below">
+          <a mat-menu-item *ngIf="apiService.isUserLoggedIn()" routerLink="/viewMovie" class="nav-link">Movie List</a>
+          <a mat-menu-item *ngIf="apiService.isUserLoggedIn()" routerLink="/addMovie" class="nav-link">Add Movie</a>
+        </mat-menu>
+      </div>
+      <div class= "employee">
+        <a mat-button *ngIf="apiService.isUserLoggedIn()" routerLink="/viewEmployee" class="nav-link">Employee Management</a>
+      </div>
+      <div class="nav-profile">
+        <button mat-button *ngIf="apiService.isUserLoggedIn()" [matMenuTriggerFor]="beforeMenu">Welcome {{this.userName}}</button>
+        <mat-menu #beforeMenu="matMenu" x-position="below">
+          <a mat-menu-item *ngIf="apiService.isUserLoggedIn()"><mat-icon>info_outline</mat-icon><span>Profile</span></a>
+          <a mat-menu-item *ngIf="apiService.isUserLoggedIn()" routerLink="/logout" class="nav-link"><mat-icon>exit_to_app</mat-icon><span>Logout</span></a>
+        </mat-menu>
+        <a mat-button *ngIf="!apiService.isUserLoggedIn()" routerLink="/signup" class="nav-link">SignUp</a>
+        <a mat-button *ngIf="!apiService.isUserLoggedIn()" routerLink="/login" class="nav-link">Login</a>
+      </div>
+    </mat-toolbar-row>
+  </mat-toolbar>

@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { MatInputModule, MatFormFieldModule , MatPaginatorModule, MatProgressSpinnerModule, MatSortModule, MatTableModule, MatTabsModule } from "@angular/material";
+import { MatInputModule, MatFormFieldModule , MatPaginatorModule, MatProgressSpinnerModule, MatSortModule, MatTableModule, MatTabsModule, MatSidenavModule, MatToolbarModule, MatListModule, MatIconModule, MatButtonModule, MatCardModule, MatMenuModule } from "@angular/material";
 import { MaterialModule } from "./material/material.module";
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -48,7 +48,9 @@ import { CustomCounterBlocksComponent } from './resuable-components/custom-count
     HttpClientModule,
     BrowserAnimationsModule,
     MaterialModule,
-    MatInputModule, MatFormFieldModule, MatPaginatorModule, MatProgressSpinnerModule, MatSortModule, MatTableModule, MatTabsModule
+    MatInputModule, MatFormFieldModule, MatPaginatorModule, MatButtonModule, MatMenuModule,
+    MatProgressSpinnerModule, MatSortModule, MatTableModule, MatIconModule,
+    MatTabsModule, MatToolbarModule, MatSidenavModule, MatListModule,MatCardModule
   ],
   providers: [EmployeeService,{provide: HTTP_INTERCEPTORS, useClass: CustomInterceptor, multi: true },],
   bootstrap: [AppComponent]

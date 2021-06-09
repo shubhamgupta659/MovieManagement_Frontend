@@ -13,7 +13,7 @@ import { EditEmployeeComponent } from './employee/edit-employee/edit-employee.co
 import { EmployeeResolver } from './service/employee-resolver.service';
 
 const routes: Routes = [
-  { path:'', component: MovieListComponent},
+  { path:'', component: EmployeeListComponent},
   { path:'viewMovie', component: MovieListComponent, canActivate:[AuthGaurdService]},
   { path:'addMovie', component: AddMovieComponent, canActivate:[AuthGaurdService]},
   { path:'editMovie', component: EditMovieComponent, canActivate:[AuthGaurdService]},
