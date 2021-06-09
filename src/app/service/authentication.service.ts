@@ -13,17 +13,15 @@ export class AuthenticationService {
   }
 
   isUserLoggedIn() {
-    let user = sessionStorage.getItem('token');
+    let user = localStorage.getItem('token');
     return !(user === null)
   }
 
   logOut() {
-    sessionStorage.removeItem('token');
-    sessionStorage.removeItem('user_name');
-    sessionStorage.removeItem('authorities');
+    localStorage.clear();
   }
 
   getRoles(){
-    return window.sessionStorage.getItem('authorities');
+    return window.localStorage.getItem('authorities');
   }
 }

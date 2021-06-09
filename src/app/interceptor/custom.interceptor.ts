@@ -19,7 +19,7 @@ export class CustomInterceptor implements HttpInterceptor {
                 })
             });
         }else{
-            let accessTokenStr = JSON.parse(window.sessionStorage.getItem('token')).access_token;
+            let accessTokenStr = JSON.parse(window.localStorage.getItem('token')).access_token;
             authReq = request.clone({
                 headers: new HttpHeaders({
                      'Content-Type':  'application/json',

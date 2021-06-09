@@ -21,7 +21,7 @@ export class MovieListComponent implements OnInit {
   constructor(private router: Router, private apiService: HttpRequestService, private sharedDataService : SharedDataService) { }
 
   ngOnInit() {
-    if(!window.sessionStorage.getItem('token')) {
+    if(!window.localStorage.getItem('token')) {
       this.router.navigate(['login']);
       return;
     }
@@ -39,8 +39,8 @@ export class MovieListComponent implements OnInit {
   };
 
   editMovie(movie: Movie): void {
-    window.sessionStorage.removeItem("editMovieId");
-    window.sessionStorage.setItem("editMovieId", movie.movieId.toString());
+    window.localStorage.removeItem("editMovieId");
+    window.localStorage.setItem("editMovieId", movie.movieId.toString());
     this.sharedDataService.changeMessage(movie.movieId.toString());
     this.router.navigate(['editMovie']);
   };

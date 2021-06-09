@@ -8,10 +8,16 @@ import { AuthenticationService } from '../service/authentication.service';
 })
 export class HeaderComponent implements OnInit {
   userName : String;
+  isAdmin : boolean = false;
   constructor(private apiService: AuthenticationService) { }
 
   ngOnInit() {
-    this.userName = window.sessionStorage.getItem('user_name');
+    this.userName = window.localStorage.getItem('user_name');
+    const roles = this.apiService.getRoles();
+    console.log(roles);
+    if(roles.includes('ADMIN')){
+      this.isAdmin =true;
+    }
   }
 
 }

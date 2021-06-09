@@ -18,7 +18,7 @@ export class EditMovieComponent implements OnInit {
   constructor(private formBuilder: FormBuilder,private router: Router, private apiService: HttpRequestService,private sharedDataService : SharedDataService) { }
 
   ngOnInit() {
-    //let movieId = window.sessionStorage.getItem("editMovieId");
+    //let movieId = window.localStorage.getItem("editMovieId");
     // if(!movieId) {
     //   alert("Invalid action.")
     //   this.router.navigate(['']);
