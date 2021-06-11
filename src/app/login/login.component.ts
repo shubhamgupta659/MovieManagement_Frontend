@@ -4,6 +4,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { HttpParams } from '@angular/common/http';
 import { Router } from '@angular/router';
 import jwt_decode from 'jwt-decode';
+import { SharedDataService } from '../service/shared-data.service';
 
 @Component({
   selector: 'app-login',
@@ -14,7 +15,9 @@ export class LoginComponent implements OnInit {
 
   loginForm: FormGroup;
   invalidLogin: boolean = false;
-  constructor(private formBuilder: FormBuilder, private router: Router, private apiService: AuthenticationService) { }
+
+  constructor(private formBuilder: FormBuilder, private router: Router, private apiService: AuthenticationService,
+    private sharedService : SharedDataService) { }
 
   onSubmit() {
     if (this.loginForm.invalid) {
@@ -26,10 +29,9 @@ export class LoginComponent implements OnInit {
       .set('grant_type', 'password');
 
     this.apiService.login(body.toString()).subscribe(data => {
-      console.log(this.getDecodedAccessToken(JSON.parse(JSON.stringify(data)).access_token));
       window.localStorage.setItem('token', JSON.stringify(data));
-      window.localStorage.setItem('user_name', this.getDecodedAccessToken(JSON.parse(JSON.stringify(data)).access_token).user_name);
-      window.localStorage.setItem('authorities', this.getDecodedAccessToken(JSON.parse(JSON.stringify(data)).access_token).authorities);
+      this.sharedService.changeUser(this.getDecodedAccessToken(JSON.parse(JSON.stringify(data)).access_token).user_name);
+      this.sharedService.changeRoles(this.getDecodedAccessToken(JSON.parse(JSON.stringify(data)).access_token).authorities);
       this.router.navigate(['']);
     }, error => {
         alert(error)
@@ -38,8 +40,8 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {
     window.localStorage.removeItem('token');
-    window.localStorage.removeItem('user_name');
-    window.localStorage.removeItem('authorities');
+    this.sharedService.changeUser(null);
+    this.sharedService.changeRoles(null);
     this.loginForm = this.formBuilder.group({
       username: ['', Validators.compose([Validators.required])],
       password: ['', Validators.required]
