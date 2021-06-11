@@ -11,15 +11,21 @@ import { AddEmployeeComponent} from './employee/add-employee/add-employee.compon
 import { EmployeeListComponent } from './employee/employee-list/employee-list.component';
 import { EditEmployeeComponent } from './employee/edit-employee/edit-employee.component';
 import { EmployeeResolver } from './service/employee-resolver.service';
+import { EmployeeComponent } from './employee/employee.component';
 
 const routes: Routes = [
   { path:'', component: MovieListComponent, canActivate:[AuthGaurdService], data:{role:'USER'}},
   { path:'viewMovie', component: MovieListComponent, canActivate:[AuthGaurdService], data:{role:'USER'}},
   { path:'addMovie', component: AddMovieComponent, canActivate:[AuthGaurdService], data:{role:'USER'}},
   { path:'editMovie', component: EditMovieComponent, canActivate:[AuthGaurdService], data:{role:'USER'}},
-  { path:'viewEmployee', component: EmployeeListComponent, canActivate:[AuthGaurdService], data:{role:'ADMIN'}},
-  { path:'editEmployee/:id', component: EditEmployeeComponent, canActivate:[AuthGaurdService], data:{role:'USER'}},
-  { path:'addEmployee', component: AddEmployeeComponent, canActivate:[AuthGaurdService], data:{role:'USER'}},
+  { path:'employee', component: EmployeeComponent, canActivate:[AuthGaurdService], data:{role:'ADMIN'},
+    children:[
+      { path:'', component: EmployeeListComponent},
+      { path:'viewEmployee', component: EmployeeListComponent},
+      { path:'editEmployee/:id', component: EditEmployeeComponent},
+      { path:'addEmployee', component: AddEmployeeComponent},
+    ]},
+  
   { path:'signup', component: SignupComponent},
   { path:'login', component: LoginComponent},
   { path: 'logout', component: LogoutComponent },

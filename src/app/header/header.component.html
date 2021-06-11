@@ -13,7 +13,7 @@
         </mat-menu>
       </div>
       <div class= "employee">
-        <a mat-button *ngIf="apiService.isUserLoggedIn() && this.isAdmin" routerLink="/viewEmployee" class="nav-link">Employee Management</a>
+        <a mat-button *ngIf="apiService.isUserLoggedIn() && this.isAdmin" routerLink="/employee" class="nav-link">Employee Management</a>
       </div>
       <div class="nav-profile">
         <button mat-button *ngIf="apiService.isUserLoggedIn()" [matMenuTriggerFor]="beforeMenu">Welcome {{this.userName}}</button>

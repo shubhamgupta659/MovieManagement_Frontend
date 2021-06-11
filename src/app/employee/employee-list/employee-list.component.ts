@@ -62,7 +62,7 @@ export class EmployeeListComponent implements OnInit {
         this.employeeData = this.employeeData.filter(u => u.employeeId !== row.employeeId);
         this.dataSource = new MatTableDataSource<Employee>(this.employeeData);
         this.notificationService.success('Employee Deleted successfully');
-        this.router.navigate(['/viewEmployee']);
+        this.router.navigate(['/employee/viewEmployee']);
       })
       
     }
@@ -71,11 +71,11 @@ export class EmployeeListComponent implements OnInit {
     }
 
     public redirectToUpdate(row: any) {
-      this.router.navigate(['/editEmployee',row.employeeId]);
+      this.router.navigate(['/employee/editEmployee',row.employeeId]);
     }
 
     public redirectToAdd() {
-      this.router.navigate(['addEmployee']);
+      this.router.navigate(['/employee/addEmployee']);
     }
 
     public tabClick(module:any){

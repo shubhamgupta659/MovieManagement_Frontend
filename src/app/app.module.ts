@@ -22,6 +22,7 @@ import { EditEmployeeComponent } from './employee/edit-employee/edit-employee.co
 import { AddEmployeeComponent } from './employee/add-employee/add-employee.component';
 import { DepartmentMapPipe } from './custom-pipes/department-mapper';
 import { CustomCounterBlocksComponent } from './resuable-components/custom-counter-blocks/custom-counter-blocks.component';
+import { EmployeeComponent } from './employee/employee.component';
 
 
 @NgModule({
@@ -39,7 +40,8 @@ import { CustomCounterBlocksComponent } from './resuable-components/custom-count
     EditEmployeeComponent,
     EmployeeListComponent,
     DepartmentMapPipe,
-    CustomCounterBlocksComponent
+    CustomCounterBlocksComponent,
+    EmployeeComponent
   ],
   imports: [
     BrowserModule,
