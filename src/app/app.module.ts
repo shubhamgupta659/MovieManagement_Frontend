@@ -23,6 +23,7 @@ import { AddEmployeeComponent } from './employee/add-employee/add-employee.compo
 import { DepartmentMapPipe } from './custom-pipes/department-mapper';
 import { CustomCounterBlocksComponent } from './resuable-components/custom-counter-blocks/custom-counter-blocks.component';
 import { EmployeeComponent } from './employee/employee.component';
+import { SearchUploadComponent } from './search-upload/search-upload.component';
 
 
 @NgModule({
@@ -41,7 +42,8 @@ import { EmployeeComponent } from './employee/employee.component';
     EmployeeListComponent,
     DepartmentMapPipe,
     CustomCounterBlocksComponent,
-    EmployeeComponent
+    EmployeeComponent,
+    SearchUploadComponent
   ],
   imports: [
     BrowserModule,

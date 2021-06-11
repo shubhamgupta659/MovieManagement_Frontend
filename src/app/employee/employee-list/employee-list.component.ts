@@ -14,9 +14,9 @@ import { NotificationService } from 'src/app/service/notification.service';
 
 export class EmployeeListComponent implements OnInit {
   public tabs = [
-    {name: 'IT', count : 6, color:'rgb(224,57,6)', icon:'developer_mode'},
-    {name: 'HR', count : 2, color:'rgb(224,2,119)', icon:'supervised_user_circle'},
-    {name: 'ACCOUNTS', count : 1, color:'rgb(173,7,85)', icon:'account_balance'}
+    {name: 'IT', count : 0, color:'rgb(224,57,6)', icon:'developer_mode'},
+    {name: 'HR', count : 0, color:'rgb(224,2,119)', icon:'supervised_user_circle'},
+    {name: 'ACCOUNTS', count : 0, color:'rgb(173,7,85)', icon:'account_balance'}
   ]
   childProp :String;
   displayedColumns: string[] = ['fullName', 'email', 'mobile', 'city', 'gender', 'department','hireDate','permanent','update','delete'];

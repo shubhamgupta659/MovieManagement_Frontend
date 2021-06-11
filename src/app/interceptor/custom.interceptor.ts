@@ -18,6 +18,14 @@ export class CustomInterceptor implements HttpInterceptor {
                   'Authorization': 'Basic '+ btoa('shgupta-client:shgupta-secret')
                 })
             });
+        }else if(request.url.includes('/file/uploadFile')){
+            let accessTokenStr = JSON.parse(window.localStorage.getItem('token')).access_token;
+            authReq = request.clone({
+                headers: new HttpHeaders({
+                    'Accept': 'application/json',
+                    'Authorization': 'Bearer '+ accessTokenStr
+                   })
+               });
         }else{
             let accessTokenStr = JSON.parse(window.localStorage.getItem('token')).access_token;
             authReq = request.clone({
