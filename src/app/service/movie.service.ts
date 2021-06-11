@@ -4,7 +4,7 @@ import {Movie} from "../model/movie.model";
 @Injectable({
   providedIn: 'root'
 })
-export class HttpRequestService {
+export class MovieService {
 
   constructor(private http: HttpClient) {}
   baseUrl: string  = 'http://localhost:8081/';

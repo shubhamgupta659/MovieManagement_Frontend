@@ -4,7 +4,6 @@ import { MatTableDataSource, MatSort, MatPaginator } from '@angular/material';
 import { map } from 'rxjs/operators';
 import { Employee } from '../../model/employee.model';
 import { Router } from '@angular/router';
-import { HttpRequestService } from '../../service/http-request.service';
 import { NotificationService } from 'src/app/service/notification.service';
 
 @Component({

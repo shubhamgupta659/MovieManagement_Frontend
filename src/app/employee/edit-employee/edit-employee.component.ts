@@ -4,7 +4,6 @@ import { Router } from '@angular/router';
 import { ActivatedRoute } from '@angular/router'
 import { Employee } from '../../model/employee.model';
 import { EmployeeService } from '../../service/employee.service';
-import { HttpRequestService } from '../../service/http-request.service';
 import { NotificationService } from '../../service/notification.service';
 import { map, catchError } from 'rxjs/operators';
 import { Observable, of, pipe } from 'rxjs';
@@ -19,7 +18,7 @@ export class EditEmployeeComponent implements OnInit {
   employee :Employee;
   form: FormGroup;
 
-  constructor(private service: EmployeeService, private notificationService: NotificationService,private router: Router, private apiService: HttpRequestService, private route:ActivatedRoute) { }
+  constructor(private service: EmployeeService, private notificationService: NotificationService,private router: Router, private route:ActivatedRoute) { }
 
   departments = [
     { id: 1, value: 'IT' },

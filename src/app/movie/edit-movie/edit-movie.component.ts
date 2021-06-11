@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { HttpRequestService } from '../../service/http-request.service';
+import { MovieService } from '../../service/movie.service';
 import { Movie } from '../../model/movie.model';
 import { SharedDataService } from 'src/app/service/shared-data.service';
 
@@ -15,7 +15,7 @@ export class EditMovieComponent implements OnInit {
   movie: Movie;
   editForm: FormGroup;
   selectedMessage:any;
-  constructor(private formBuilder: FormBuilder,private router: Router, private apiService: HttpRequestService,private sharedDataService : SharedDataService) { }
+  constructor(private formBuilder: FormBuilder,private router: Router, private apiService: MovieService,private sharedDataService : SharedDataService) { }
 
   ngOnInit() {
     //let movieId = window.localStorage.getItem("editMovieId");

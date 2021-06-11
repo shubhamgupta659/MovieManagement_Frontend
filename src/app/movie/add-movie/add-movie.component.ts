@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpRequestService } from '../../service/http-request.service';
+import { MovieService } from '../../service/movie.service';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
@@ -10,7 +10,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class AddMovieComponent implements OnInit {
 
-  constructor(private formBuilder: FormBuilder,private router: Router, private apiService: HttpRequestService) { }
+  constructor(private formBuilder: FormBuilder,private router: Router, private apiService: MovieService) { }
   
   addForm: FormGroup;
 
