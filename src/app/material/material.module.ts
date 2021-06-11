@@ -20,6 +20,12 @@ import * as Material from "@angular/material";
     Material.MatIconModule,
     Material.MatPaginatorModule,
     Material.MatSortModule,
+    Material.MatSidenavModule,
+    Material.MatListModule,
+    Material.MatCardModule,
+    Material.MatTabsModule,
+    Material.MatProgressSpinnerModule,
+    Material.MatMenuModule
   ],
   exports: [
     Material.MatToolbarModule,
@@ -37,6 +43,12 @@ import * as Material from "@angular/material";
     Material.MatIconModule,
     Material.MatPaginatorModule,
     Material.MatSortModule,
+    Material.MatSidenavModule,
+    Material.MatListModule,
+    Material.MatCardModule,
+    Material.MatTabsModule,
+    Material.MatProgressSpinnerModule,
+    Material.MatMenuModule
   ],
   declarations: []
 })

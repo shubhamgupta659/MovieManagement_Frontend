@@ -49,10 +49,7 @@ import { EmployeeComponent } from './employee/employee.component';
     ReactiveFormsModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    MaterialModule,
-    MatInputModule, MatFormFieldModule, MatPaginatorModule, MatButtonModule, MatMenuModule,
-    MatProgressSpinnerModule, MatSortModule, MatTableModule, MatIconModule,
-    MatTabsModule, MatToolbarModule, MatSidenavModule, MatListModule,MatCardModule
+    MaterialModule
   ],
   providers: [EmployeeService,{provide: HTTP_INTERCEPTORS, useClass: CustomInterceptor, multi: true },],
   bootstrap: [AppComponent]
