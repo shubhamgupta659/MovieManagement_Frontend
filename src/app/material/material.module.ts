@@ -25,7 +25,8 @@ import * as Material from "@angular/material";
     Material.MatCardModule,
     Material.MatTabsModule,
     Material.MatProgressSpinnerModule,
-    Material.MatMenuModule
+    Material.MatMenuModule,
+    Material.MatChipsModule
   ],
   exports: [
     Material.MatToolbarModule,
@@ -48,7 +49,8 @@ import * as Material from "@angular/material";
     Material.MatCardModule,
     Material.MatTabsModule,
     Material.MatProgressSpinnerModule,
-    Material.MatMenuModule
+    Material.MatMenuModule,
+    Material.MatChipsModule
   ],
   declarations: []
 })

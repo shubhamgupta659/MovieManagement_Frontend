@@ -1,9 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { MovieService } from '../../service/movie.service';
 import {Movie} from "../../model/movie.model";
 import { SharedDataService } from 'src/app/service/shared-data.service';
 import { TabsDetail } from 'src/app/model/tabs.model';
+import { MatPaginator, MatSort, MatTableDataSource } from '@angular/material';
+import { NotificationService } from 'src/app/service/notification.service';
 
 @Component({
   selector: 'app-movie-list',
@@ -16,9 +18,13 @@ export class MovieListComponent implements OnInit {
   public tabs = [
     {name: 'HINDI', count : 0, color:'rgb(224,57,6)', icon:'developer_mode'}
   ];
+  displayedColumns: string[] = ['movieId', 'movieName', 'rating','language','update','delete'];
   public newtab =new Array();
+  public dataSource : MatTableDataSource<Movie>;
+  @ViewChild(MatPaginator) paginator: MatPaginator;
+  @ViewChild(MatSort) sort: MatSort;
 
-  constructor(private router: Router, private apiService: MovieService, private sharedDataService : SharedDataService) { }
+  constructor(private router: Router, private apiService: MovieService, private sharedDataService : SharedDataService,private notificationService: NotificationService) { }
 
   ngOnInit() {
     if(!window.localStorage.getItem('token')) {
@@ -32,6 +38,10 @@ export class MovieListComponent implements OnInit {
     this.apiService.getMovies()
       .subscribe( data => {
           this.movies = data;
+          this.movies = data;this.dataSource = new MatTableDataSource<Movie>(this.movies);
+          this.dataSource.paginator = this.paginator;
+          this.dataSource.sort = this.sort;
+
       });
   }
 
@@ -42,18 +52,25 @@ export class MovieListComponent implements OnInit {
     }
   }
 
-  deleteMovie(movie: Movie): void {
-    this.apiService.deleteUser(movie.movieId)
-      .subscribe( data => {
-        this.movies = this.movies.filter(u => u !== movie);
-      })
-  };
+  public redirectToDelete = (row: any) => {
+    this.apiService.deleteUser(row.movieId)
+    .subscribe( data => {
+      this.movies = this.movies.filter(u => u.movieId !== row.movieId);
+      this.dataSource = new MatTableDataSource<Movie>(this.movies);
+      this.newtab=[];
+      this.apiService.getCountsByLanguage().subscribe(
+        list => {
+        this.setTabData(list);
+        });
+      this.notificationService.success('Movie Deleted successfully');
+      
+    })
+    
+  }
 
-  editMovie(movie: Movie): void {
-    window.localStorage.removeItem("editMovieId");
-    window.localStorage.setItem("editMovieId", movie.movieId.toString());
-    this.sharedDataService.changeMessage(movie.movieId.toString());
+  public redirectToUpdate(row: any) {
+    this.sharedDataService.changeMessage(row.movieId.toString());
     this.router.navigate(['editMovie']);
-  };
+  }
 
 }

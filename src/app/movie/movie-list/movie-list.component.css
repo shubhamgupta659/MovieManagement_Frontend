@@ -1,9 +1,4 @@
-.movie-container {
-    display: flex;
-    flex-direction: column;
-    margin: auto;
-  }
+table {
+  width: 100%;
 
-  .block-container{
-    margin-top:50px;
-  }
+}
