@@ -5,7 +5,7 @@ import { MaterialModule } from "./material/material.module";
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
-import { ReactiveFormsModule } from "@angular/forms";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
@@ -24,6 +24,8 @@ import { DepartmentMapPipe } from './custom-pipes/department-mapper';
 import { CustomCounterBlocksComponent } from './resuable-components/custom-counter-blocks/custom-counter-blocks.component';
 import { EmployeeComponent } from './employee/employee.component';
 import { UploadComponent } from './search-upload/upload.component';
+import { CommonModule } from '@angular/common';
+import { MovieFilterPipe } from './custom-pipes/movie-filter.pipe';
 
 
 @NgModule({
@@ -43,9 +45,12 @@ import { UploadComponent } from './search-upload/upload.component';
     DepartmentMapPipe,
     CustomCounterBlocksComponent,
     EmployeeComponent,
-    UploadComponent
+    UploadComponent,
+    MovieFilterPipe
   ],
   imports: [
+    CommonModule,
+    FormsModule,
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
@@ -53,7 +58,8 @@ import { UploadComponent } from './search-upload/upload.component';
     BrowserAnimationsModule,
     MaterialModule
   ],
-  providers: [EmployeeService,{provide: HTTP_INTERCEPTORS, useClass: CustomInterceptor, multi: true },],
+  exports: [MovieFilterPipe],
+  providers: [MovieFilterPipe,EmployeeService,{provide: HTTP_INTERCEPTORS, useClass: CustomInterceptor, multi: true },],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

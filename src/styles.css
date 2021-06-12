@@ -35,5 +35,164 @@ mat-radio-group mat-radio-button{
 .button-row button{
     margin: 5px;
 }
+
+.mat-header-cell {
+    justify-content:flex-start;
+    text-align: justify; /* For Edge */ 
+    vertical-align: top;
+}
+
+.mat-header-row {
+    position: -webkit-sticky;
+    position: sticky;
+    top: -.5px;
+    background: white;
+    z-index: 100;
+}
+.header {
+    font-weight: bold;
+    color: black;
+    font-size: 16px;
+    position: -webkit-sticky;
+    position: sticky;
+    top: -.5px;
+    background: white;
+    z-index: 100;
+}
+mat-table {
+    height: calc(100vh - 30px);
+    overflow: auto;
+}
+
+.example-container {
+  overflow-x: scroll;
+}
+
+/* end css for tables */
+
+
+
+.full-width{
+    width: 100%;
+}
+
+
+.example-margin {
+  margin: 0 10px;
+}
+
+.fix-header .topbar {
+    position: fixed;
+    width: 100%
+}
+
+.fix-header .page-wrapper {
+    padding-top: 60px
+}
+
+.fix-header .right-side-panel {
+    top: 70px;
+    height: calc(100% - 70px)
+}
+
+.card-no-border .card {
+    border: 0px;
+    border-radius: 4px;
+    -webkit-box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.05);
+    box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.05)
+}
+
+.card-no-border .shadow-none {
+    -webkit-box-shadow: none;
+    box-shadow: none
+}
+
+.fix-sidebar .left-sidebar {
+    position: fixed
+}
+.mini-sidebar.fix-sidebar .left-sidebar {
+        position: absolute
+    }
+
+body { 
+  font-family: Roboto, Arial, sans-serif;
+  margin: 0;
+}
+
+.basic-container {
+  padding: 30px;
+  height:100vh;
+}
+
+.version-info {
+  font-size: 8pt;
+  float: right;
+}
+
+
+.right-sidebar {
+    position: fixed;
+    right: -240px;
+    width: 240px;
+    display: none;
+    z-index: 1100;
+    background: #ffffff;
+    top: 0px;
+    padding-bottom: 20px;
+    height: 100%;
+    -webkit-box-shadow: 5px 1px 40px rgba(0, 0, 0, 0.1);
+    box-shadow: 5px 1px 40px rgba(0, 0, 0, 0.1);
+    -webkit-transition: all 0.3s ease;
+    -o-transition: all 0.3s ease;
+    transition: all 0.3s ease
+}
+
+.right-sidebar .rpanel-title {
+    display: block;
+    padding: 19px 20px;
+    color: #ffffff;
+    text-transform: uppercase;
+    font-size: 15px;
+    background: #fb9678
+}
+
+.right-sidebar .rpanel-title span {
+    float: right;
+    cursor: pointer;
+    font-size: 11px
+}
+
+.right-sidebar .rpanel-title span:hover {
+    color: #ffffff
+}
+
+.right-sidebar .r-panel-body {
+    padding: 20px
+}
+
+.right-sidebar .r-panel-body ul {
+    margin: 0px;
+    padding: 0px
+}
+
+.right-sidebar .r-panel-body ul li {
+    list-style: none;
+    padding: 5px 0
+}
+
+.shw-rside {
+    right: 0px;
+    width: 240px;
+    display: block
+}
+.slimScrollBar {
+    z-index: 10!important
+}
+.card-no-border {
+  max-width: 400px;
+}
+
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+
