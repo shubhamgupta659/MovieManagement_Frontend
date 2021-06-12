@@ -1,4 +1,4 @@
-import { HttpClient, HttpEvent, HttpHeaders, HttpRequest } from '@angular/common/http';
+import { HttpClient, HttpEvent, HttpHeaders, HttpRequest, HttpResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
@@ -27,5 +27,9 @@ export class FileUploadService {
 
   deleteFile(id: number) {
     return this.http.delete(this.baseUrl + 'file/removeFile/' + id );
+  }
+
+  downloadFile(id: number):Observable<any> {
+    return this.http.get(this.baseUrl + 'file/downloadFile/' + id, {responseType: 'blob'} );
   }
 }

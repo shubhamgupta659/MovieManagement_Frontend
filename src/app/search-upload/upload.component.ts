@@ -6,6 +6,7 @@ import { Observable } from 'rxjs';
 import { FilesDetail } from '../model/files-detail.model';
 import { FileUploadService } from '../service/file-upload.service';
 import { NotificationService } from '../service/notification.service';
+import * as fileSaver from 'file-saver';
 
 @Component({
   selector: 'upload',
@@ -21,6 +22,7 @@ export class UploadComponent implements OnInit {
   currentFile?: File;
   progress = 0;
   message = '';
+  clickedRow: any;
 
   fileInfos:any;
 
@@ -91,5 +93,20 @@ export class UploadComponent implements OnInit {
       this.router.navigate(['/searchupload']);
     })
     
+  }
+
+  public redirectToDownload = (row: any) => {
+    let thefile = {};
+    this.uploadService.downloadFile(row.id)
+    .subscribe(response => {
+			let blob:any = new Blob([response], { type: 'text/json; charset=utf-8' });
+			const url = window.URL.createObjectURL(blob);
+			fileSaver.saveAs(blob, row.fileName);
+		}), error => console.log('Error downloading the file'),
+                 () => console.info('File downloaded successfully');
+    
+  }
+  public rowClick(row:any){
+    this.clickedRow = row;
   }
 }

@@ -27,7 +27,6 @@ export class MovieListComponent implements OnInit {
     }
     this.apiService.getCountsByLanguage().subscribe(
       list => {
-        console.log(list);
       this.setTabData(list);
       });
     this.apiService.getMovies()
@@ -41,7 +40,6 @@ export class MovieListComponent implements OnInit {
       const tab = {'name': list[i][0], 'count':list[i][1],'color':'rgb(224,57,6)','icon':'developer_mode'};
       this.newtab.push(tab);
     }
-    console.log(this.newtab);
   }
 
   deleteMovie(movie: Movie): void {
