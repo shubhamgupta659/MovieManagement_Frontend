@@ -12,7 +12,7 @@ import { EmployeeListComponent } from './employee/employee-list/employee-list.co
 import { EditEmployeeComponent } from './employee/edit-employee/edit-employee.component';
 import { EmployeeResolver } from './service/employee-resolver.service';
 import { EmployeeComponent } from './employee/employee.component';
-import { SearchUploadComponent } from './search-upload/search-upload.component';
+import { UploadComponent } from './search-upload/upload.component';
 
 const routes: Routes = [
   { path:'', component: MovieListComponent, canActivate:[AuthGaurdService], data:{role:'USER'}},
@@ -26,7 +26,7 @@ const routes: Routes = [
       { path:'editEmployee/:id', component: EditEmployeeComponent},
       { path:'addEmployee', component: AddEmployeeComponent},
     ]},
-  { path:'searchupload', component: SearchUploadComponent,canActivate:[AuthGaurdService], data:{role:'USER'}},
+  { path:'upload', component: UploadComponent,canActivate:[AuthGaurdService], data:{role:'USER'}},
   { path:'signup', component: SignupComponent},
   { path:'login', component: LoginComponent},
   { path: 'logout', component: LogoutComponent },

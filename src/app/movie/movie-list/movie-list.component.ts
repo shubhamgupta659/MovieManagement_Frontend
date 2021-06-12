@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { MovieService } from '../../service/movie.service';
 import {Movie} from "../../model/movie.model";
 import { SharedDataService } from 'src/app/service/shared-data.service';
+import { TabsDetail } from 'src/app/model/tabs.model';
 
 @Component({
   selector: 'app-movie-list',
@@ -13,10 +14,9 @@ export class MovieListComponent implements OnInit {
 
   movies: any;
   public tabs = [
-    {name: 'HINDI', count : 6, color:'rgb(224,57,6)', icon:'developer_mode'},
-    {name: 'ENGLISH', count : 2, color:'rgb(224,2,119)', icon:'supervised_user_circle'},
-    {name: 'TELUGU', count : 1, color:'rgb(173,7,85)', icon:'account_balance'}
-  ]
+    {name: 'HINDI', count : 0, color:'rgb(224,57,6)', icon:'developer_mode'}
+  ];
+  public newtab : Array<TabsDetail>;
 
   constructor(private router: Router, private apiService: MovieService, private sharedDataService : SharedDataService) { }
 
@@ -25,10 +25,25 @@ export class MovieListComponent implements OnInit {
       this.router.navigate(['login']);
       return;
     }
+    this.apiService.getCountsByLanguage().subscribe(
+      list => {
+        console.log(list);
+      this.setTabData(list);
+      });
     this.apiService.getMovies()
       .subscribe( data => {
           this.movies = data;
       });
+  }
+
+  public setTabData(list:any){
+    for(var i = 0; i < list.length; i++){
+        // this.newtab[i].name = list[i][0];
+        // this.newtab[i].count = list[i][1]; 
+        // this.newtab[i].color = 'rgb(224,57,6)';
+        // this.newtab[i].icon = 'developer_mode';
+    }
+    //console.log(this.newtab);
   }
 
   deleteMovie(movie: Movie): void {

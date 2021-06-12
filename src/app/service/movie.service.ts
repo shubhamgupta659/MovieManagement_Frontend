@@ -28,4 +28,8 @@ export class MovieService {
   deleteUser(id: number){
     return this.http.delete(this.baseUrl + 'movies/removeMovie/' + id );
   }
+
+  getCountsByLanguage() {
+    return this.http.get(this.baseUrl + 'movies/countByLanguage');
+  }
 }

@@ -18,9 +18,12 @@ export class HeaderComponent implements OnInit {
     });
     this.sharedService.roles.subscribe(data=>{
       if(data !== null && data.indexOf('ADMIN') !== -1){
-        this.isAdmin =true;
+        this.sharedService.isAdminChange(true);
       }
-    });    
+    });  
+    this.sharedService.isAdmin.subscribe(data=>{
+      this.isAdmin = data;
+    });  
   }
 
 }

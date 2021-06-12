@@ -22,5 +22,6 @@ export class AuthenticationService {
     localStorage.clear();
     this.sharedService.changeUser(null);
     this.sharedService.changeRoles(null);
+    this.sharedService.isAdminChange(false);
   }
 }

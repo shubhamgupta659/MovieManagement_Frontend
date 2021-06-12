@@ -51,7 +51,7 @@ export class EditEmployeeComponent implements OnInit {
     this.service.addEmployee(this.service.form.value).subscribe(data => {
       this.service.form.reset();
       this.service.initializeFormGroup();
-      this.notificationService.success('Employee Added successfully');
+      this.notificationService.success('Employee Updated successfully');
       this.router.navigate(['/employee/viewEmployee']);
     });
   }

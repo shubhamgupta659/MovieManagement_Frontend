@@ -1,0 +1,27 @@
+table {
+    width: 100%;
+
+  }
+
+  th.mat-sort-header-sorted {
+    color: black;
+  }
+
+  mat-header-cell, mat-cell {
+    justify-content: left;
+  }
+  .left-text {
+    text-align: left;
+  }
+
+  .demo-row-is-clicked {
+    font-weight: bold;
+  }
+
+  .employee-detail{
+    margin: 20px; 
+  }
+
+  .block-container{
+    margin-top:50px;
+  }

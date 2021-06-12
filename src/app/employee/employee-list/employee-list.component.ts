@@ -22,10 +22,11 @@ export class EmployeeListComponent implements OnInit {
   displayedColumns: string[] = ['fullName', 'email', 'mobile', 'city', 'gender', 'department','hireDate','permanent','update','delete'];
   employeeData: any;
   public dataSource : MatTableDataSource<Employee>;
-  clickedRow: any;
-  public selectedModule: String = 'IT';
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
+  clickedRow: any;
+  public selectedModule: String = 'IT';
+  
 
   constructor(private service: EmployeeService,private notificationService: NotificationService,private router: Router) { }
 

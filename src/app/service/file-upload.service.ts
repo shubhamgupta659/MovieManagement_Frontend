@@ -6,14 +6,14 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class FileUploadService {
-  private baseUrl = 'http://localhost:8081';
+  private baseUrl = 'http://localhost:8081/';
 
   constructor(private http: HttpClient) { }
 
   upload(file: File): Observable<HttpEvent<any>> {
     const formData: FormData = new FormData();
     formData.append('file', file);
-    const req = new HttpRequest('POST', this.baseUrl+'/file/uploadFile', formData, {
+    const req = new HttpRequest('POST', this.baseUrl+'file/uploadFile', formData, {
       reportProgress: true,
       responseType: 'json'
     });
@@ -22,6 +22,10 @@ export class FileUploadService {
   }
 
   getFiles(): Observable<any> {
-    return this.http.get(this.baseUrl+'/file/fileDētails');
+    return this.http.get(this.baseUrl+'file/fileDetails');
+  }
+
+  deleteFile(id: number) {
+    return this.http.delete(this.baseUrl + 'file/removeFile/' + id );
   }
 }
