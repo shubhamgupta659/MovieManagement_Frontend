@@ -16,7 +16,7 @@ export class MovieListComponent implements OnInit {
   public tabs = [
     {name: 'HINDI', count : 0, color:'rgb(224,57,6)', icon:'developer_mode'}
   ];
-  public newtab : Array<TabsDetail>;
+  public newtab =new Array();
 
   constructor(private router: Router, private apiService: MovieService, private sharedDataService : SharedDataService) { }
 
@@ -38,12 +38,10 @@ export class MovieListComponent implements OnInit {
 
   public setTabData(list:any){
     for(var i = 0; i < list.length; i++){
-        // this.newtab[i].name = list[i][0];
-        // this.newtab[i].count = list[i][1]; 
-        // this.newtab[i].color = 'rgb(224,57,6)';
-        // this.newtab[i].icon = 'developer_mode';
+      const tab = {'name': list[i][0], 'count':list[i][1],'color':'rgb(224,57,6)','icon':'developer_mode'};
+      this.newtab.push(tab);
     }
-    //console.log(this.newtab);
+    console.log(this.newtab);
   }
 
   deleteMovie(movie: Movie): void {
