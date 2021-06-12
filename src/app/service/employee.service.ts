@@ -62,4 +62,8 @@ export class EmployeeService {
   getCountsByDepartment() {
     return this.http.get(this.baseUrl + 'employee/countByDepartment');
   }
+
+  downloadEmployeeCSV() {
+    return this.http.get(this.baseUrl + 'employee/download',{responseType: 'blob'});
+  }
 }

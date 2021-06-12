@@ -3,6 +3,10 @@ table {
 
   }
 
+  .pull-right{
+    float:right;
+  }
+
   th.mat-sort-header-sorted {
     color: black;
   }

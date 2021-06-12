@@ -18,5 +18,5 @@ mat-sidenav {
     width: 100%;
 }
 .nav-profile{
-    float:right;
+    float:right !important;
 }

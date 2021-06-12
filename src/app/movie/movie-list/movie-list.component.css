@@ -2,3 +2,10 @@ table {
   width: 100%;
 
 }
+.block-container{
+  margin:20px;
+}
+
+.pull-right{
+  float:right;
+}

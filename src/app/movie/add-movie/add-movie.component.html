@@ -16,6 +16,9 @@
       <label for="movieLanguage">Movie Language:</label>
       <input formControlName="language" placeholder="Language" name="movieLanguage" class="form-control" id="lastName">
     </div>
-    <button class="btn btn-success">Add Movie</button>
+    <div class="buttons">
+      <div class="clear-add-button"><button mat-raised-button  color="primary" >Add Movie</button></div>
+      <div class="clear-back-button"><button mat-raised-button  color="primary" [routerLink]="['/viewMovie']" >Back</button></div>
+    </div>
   </form>
 </div>

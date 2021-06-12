@@ -5,6 +5,7 @@ import { map } from 'rxjs/operators';
 import { Employee } from '../../model/employee.model';
 import { Router } from '@angular/router';
 import { NotificationService } from 'src/app/service/notification.service';
+import * as fileSaver from 'file-saver';
 
 @Component({
   selector: 'employee-list',
@@ -78,6 +79,15 @@ export class EmployeeListComponent implements OnInit {
       this.router.navigate(['/employee/addEmployee']);
     }
 
+    public redirectToDownload(){
+      this.service.downloadEmployeeCSV()
+    .subscribe(response => {
+			let blob:any = new Blob([response], { type: 'text/json; charset=utf-8' });
+			const url = window.URL.createObjectURL(blob);
+			fileSaver.saveAs(blob, 'employee.csv');
+		}), error => console.log('Error downloading the file'),
+                 () => console.info('File downloaded successfully');
+    }
     public tabClick(module:any){
       this.selectedModule =module;
       //this.dataSource.filter = this.selectedModule.trim().toLocaleLowerCase();

@@ -14,8 +14,8 @@ import * as fileSaver from 'file-saver';
   styleUrls: ['./upload.component.css']
 })
 export class UploadComponent implements OnInit {
-  displayedColumns: string[] = ['id', 'fileName', 'fileType','download','delete'];
-  public dataSource : MatTableDataSource<FilesDetail>;
+  displayedColumns: string[] = ['id', 'fileName', 'fileType', 'download', 'delete'];
+  public dataSource: MatTableDataSource<FilesDetail>;
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
   selectedFiles?: FileList;
@@ -24,18 +24,18 @@ export class UploadComponent implements OnInit {
   message = '';
   clickedRow: any;
 
-  fileInfos:any;
+  fileInfos: any;
 
-  constructor(private uploadService: FileUploadService,private notificationService: NotificationService,private router: Router) { }
+  constructor(private uploadService: FileUploadService, private notificationService: NotificationService, private router: Router) { }
 
   ngOnInit(): void {
-      this.uploadService.getFiles().subscribe(data=>{
+    this.uploadService.getFiles().subscribe(data => {
       this.fileInfos = data;
       this.dataSource = new MatTableDataSource<FilesDetail>(data);
       this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.sort;
     });
-    
+
   }
 
   selectFile(event: any): void {
@@ -57,7 +57,7 @@ export class UploadComponent implements OnInit {
               this.progress = Math.round(100 * event.loaded / event.total);
             } else if (event instanceof HttpResponse) {
               this.message = event.body.message;
-              this.uploadService.getFiles().subscribe(data=>{
+              this.uploadService.getFiles().subscribe(data => {
                 this.fileInfos = data;
                 this.dataSource = new MatTableDataSource<FilesDetail>(data);
                 this.dataSource.paginator = this.paginator;
@@ -86,27 +86,30 @@ export class UploadComponent implements OnInit {
 
   public redirectToDelete = (row: any) => {
     this.uploadService.deleteFile(row.id)
-    .subscribe( data => {
-      this.fileInfos = this.fileInfos.filter(u => u.id !== row.id);
-      this.dataSource = new MatTableDataSource<FilesDetail>(this.fileInfos);
-      this.notificationService.success('File Deleted successfully');
-      this.router.navigate(['/searchupload']);
-    })
-    
+      .subscribe(data => {
+        this.fileInfos = this.fileInfos.filter(u => u.id !== row.id);
+        this.dataSource = new MatTableDataSource<FilesDetail>(this.fileInfos);
+        this.notificationService.success('File Deleted successfully');
+        this.router.navigate(['/searchupload']);
+      })
+
   }
 
   public redirectToDownload = (row: any) => {
-    let thefile = {};
     this.uploadService.downloadFile(row.id)
-    .subscribe(response => {
-			let blob:any = new Blob([response], { type: 'text/json; charset=utf-8' });
-			const url = window.URL.createObjectURL(blob);
-			fileSaver.saveAs(blob, row.fileName);
-		}), error => console.log('Error downloading the file'),
-                 () => console.info('File downloaded successfully');
-    
+      .subscribe(response => {
+        let blob: any = new Blob([response], { type: 'text/json; charset=utf-8' });
+        const url = window.URL.createObjectURL(blob);
+        fileSaver.saveAs(blob, row.fileName);
+      }), error => console.log('Error downloading the file'),
+      () => console.info('File downloaded successfully');
+
   }
-  public rowClick(row:any){
+  public rowClick(row: any) {
     this.clickedRow = row;
+  }
+
+  public doFilter = (value: string) => {
+    this.dataSource.filter = value.trim().toLocaleLowerCase();
   }
 }
