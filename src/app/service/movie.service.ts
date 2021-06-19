@@ -32,4 +32,8 @@ export class MovieService {
   getCountsByLanguage() {
     return this.http.get(this.baseUrl + 'movies/countByLanguage');
   }
+
+  searchMovieByKeyword(key:String) {
+    return this.http.get(this.baseUrl + 'movies/searchByKey/'+key);
+  }
 }

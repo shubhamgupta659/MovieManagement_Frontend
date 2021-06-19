@@ -1,6 +1,17 @@
+<div class="serach-box">
+  <input type="search" class="mat-elevation-z2" [matAutocomplete]="auto" [formControl]="searchControl">
+  <div class="spacer"></div>
+  <mat-autocomplete #auto="matAutocomplete" class="mat-elevation-z2">
+    <mat-option *ngFor="let item of results" [value]="item">
+      <span [innerHTML]="item | bold:searchControl.value"></span>
+    </mat-option>
+  </mat-autocomplete>
+</div>
+
 <div class="block-container">
   <custom-counter-blocks [tabsdata]="newtab" (tabClickEvent)="tabClick($event)"></custom-counter-blocks>
 </div>
+
 <div class="example-container mat-elevation-z8">
 
   <h4 class="card-title ">Movies List

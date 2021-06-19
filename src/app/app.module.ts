@@ -26,6 +26,7 @@ import { EmployeeComponent } from './employee/employee.component';
 import { UploadComponent } from './search-upload/upload.component';
 import { CommonModule } from '@angular/common';
 import { MovieFilterPipe } from './custom-pipes/movie-filter.pipe';
+import { BoldPipe } from './custom-pipes/bold.pipe';
 
 
 @NgModule({
@@ -46,7 +47,8 @@ import { MovieFilterPipe } from './custom-pipes/movie-filter.pipe';
     CustomCounterBlocksComponent,
     EmployeeComponent,
     UploadComponent,
-    MovieFilterPipe
+    MovieFilterPipe,
+    BoldPipe
   ],
   imports: [
     CommonModule,
@@ -58,8 +60,8 @@ import { MovieFilterPipe } from './custom-pipes/movie-filter.pipe';
     BrowserAnimationsModule,
     MaterialModule
   ],
-  exports: [MovieFilterPipe],
-  providers: [MovieFilterPipe,EmployeeService,{provide: HTTP_INTERCEPTORS, useClass: CustomInterceptor, multi: true },],
+  exports: [MovieFilterPipe,BoldPipe],
+  providers: [MovieFilterPipe,BoldPipe,EmployeeService,{provide: HTTP_INTERCEPTORS, useClass: CustomInterceptor, multi: true },],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

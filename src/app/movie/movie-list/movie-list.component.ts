@@ -6,6 +6,9 @@ import { SharedDataService } from 'src/app/service/shared-data.service';
 import { MatPaginator, MatSort, MatTableDataSource } from '@angular/material';
 import { NotificationService } from 'src/app/service/notification.service';
 import { MovieFilterPipe } from 'src/app/custom-pipes/movie-filter.pipe';
+import { FormControl } from '@angular/forms';
+import { Observable } from 'rxjs';
+import { startWith, map, debounceTime } from 'rxjs/operators';
 
 @Component({
   selector: 'app-movie-list',
@@ -13,7 +16,9 @@ import { MovieFilterPipe } from 'src/app/custom-pipes/movie-filter.pipe';
   styleUrls: ['./movie-list.component.css']
 })
 export class MovieListComponent implements OnInit {
-
+  searchControl: FormControl;
+  filteredResults$: Observable<string[]>;
+  results : any;
   movies: any;
   idFilter: number;
   nameFilter: string;
@@ -31,7 +36,15 @@ export class MovieListComponent implements OnInit {
 
   constructor(private router: Router, private apiService: MovieService,
     private sharedDataService: SharedDataService, private notificationService: NotificationService,
-    private moviefilterPipe: MovieFilterPipe) { }
+    private moviefilterPipe: MovieFilterPipe) {
+
+    this.searchControl = new FormControl('');
+    this.searchControl.valueChanges.pipe(debounceTime(500)).subscribe(data=>this.filterResults(data));
+    //.pipe(
+      //debounceTime(500),
+      //map(val => this.filterResults(val))
+    //);
+    }
 
   ngOnInit() {
     if (!window.localStorage.getItem('token')) {
@@ -57,7 +70,15 @@ export class MovieListComponent implements OnInit {
       this.newtab.push(tab);
     }
   }
-
+  
+  private filterResults(val: string){
+    this.apiService.searchMovieByKeyword(val).subscribe(data=>{
+      this.results = data;
+    });
+    //console.log(this.results);
+    //return this.results;
+  }
+  
   public redirectToDelete = (row: any) => {
     this.apiService.deleteUser(row.movieId)
       .subscribe(data => {
