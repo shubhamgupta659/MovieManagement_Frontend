@@ -24,10 +24,11 @@ export class MovieListComponent implements OnInit {
   nameFilter: string;
   ratingFilter: string;
   languageFilter: string;
+  yearFilter : string;
   public tabs = [
     { name: 'HINDI', count: 0, color: 'rgb(224,57,6)', icon: 'developer_mode' }
   ];
-  displayedColumns: string[] = ['movieId', 'movieName', 'rating', 'language', 'update', 'delete'];
+  displayedColumns: string[] = ['movieId', 'movieName', 'rating', 'language','year','createdBy','createdDateTime', 'update', 'delete'];
   public newtab = new Array();
   public selectedModule: String = '';
   public dataSource: MatTableDataSource<Movie>;
@@ -104,7 +105,7 @@ export class MovieListComponent implements OnInit {
 
   applyFilter() {
     var filteredItems: Movie[] = this.moviefilterPipe.transform(this.movies,
-      this.idFilter, this.nameFilter, this.ratingFilter, this.languageFilter);
+      this.idFilter, this.nameFilter, this.ratingFilter, this.languageFilter,this.yearFilter);
     this.dataSource = new MatTableDataSource(filteredItems);
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;

@@ -4,5 +4,8 @@ export class Movie {
     movieName :string;
     rating:string;
     language:string;
+    year:number;
+    createdBy:string;
+    createdDateTime:string;
   
   }

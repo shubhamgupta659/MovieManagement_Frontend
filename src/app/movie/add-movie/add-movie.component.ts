@@ -19,7 +19,8 @@ export class AddMovieComponent implements OnInit {
       movieId: [],
       movieName: ['', Validators.required],
       rating: ['', Validators.required],
-      language: ['', Validators.required]
+      language: ['', Validators.required],
+      year: [, Validators.required]
     });
   }
 

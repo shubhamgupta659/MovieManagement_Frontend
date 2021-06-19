@@ -28,7 +28,8 @@ export class EditMovieComponent implements OnInit {
       movieId: [],
       movieName: ['', Validators.required],
       rating: ['', Validators.required],
-      language: ['', Validators.required]
+      language: ['', Validators.required],
+      year: [, Validators.required]
     });
     this.sharedDataService.currentMessage.subscribe(message => (this.selectedMessage= message));
     this.apiService.getMovieById(+this.selectedMessage)

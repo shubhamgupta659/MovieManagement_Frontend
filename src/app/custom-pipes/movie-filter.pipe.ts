@@ -5,7 +5,7 @@ import { Pipe, PipeTransform } from '@angular/core';
 })
 export class MovieFilterPipe implements PipeTransform {
 
-  transform(items: any, idFilter: number, nameFilter: string, ratingFilter: string, languageFilter: string) {
+  transform(items: any, idFilter: number, nameFilter: string, ratingFilter: string, languageFilter: string, yearFilter: string) {
     if (items && items.length) {
       return items.filter(item => {
         if ((idFilter && !item.movieId) || (idFilter && item.movieId.toString().indexOf(idFilter.toString()) === -1)) {
@@ -18,6 +18,9 @@ export class MovieFilterPipe implements PipeTransform {
           return false;
         }
         if ((languageFilter && !item.language) || (languageFilter && item.language.toLowerCase().indexOf(languageFilter.toLowerCase()) === -1)) {
+          return false;
+        }
+        if ((yearFilter && !item.year) || (yearFilter && item.year.toString().indexOf(yearFilter.toString()) === -1)) {
           return false;
         }
 
