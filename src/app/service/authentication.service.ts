@@ -15,6 +15,11 @@ export class AuthenticationService {
     return this.http.post('http://localhost:8081/' + 'oauth/token', loginPayload);
   }
 
+  signup(signupPayload) {
+    console.log(signupPayload)
+    return this.http.post('http://localhost:8081/' + 'users/user', signupPayload);
+  }
+
   isUserLoggedIn() {
     let user = localStorage.getItem('token');
     return !(user === null)

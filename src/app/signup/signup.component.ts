@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import * as bcrypt from 'bcryptjs';
+import { AuthenticationService } from '../service/authentication.service';
+import { NotificationService } from '../service/notification.service';
 
 @Component({
   selector: 'app-signup',
@@ -8,7 +12,9 @@ import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms'
 })
 export class SignupComponent implements OnInit {
   userForm: FormGroup;
-  constructor(private fb: FormBuilder) { }
+  pass :String;
+  constructor(private fb: FormBuilder,private apiService: AuthenticationService,private notificationService: NotificationService,private router: Router) { }
+  
 
   ngOnInit() {
     this.userForm = this.fb.group({
@@ -24,7 +30,14 @@ export class SignupComponent implements OnInit {
     if (this.userForm.invalid) {
       return;
     }
-    console.log(this.userForm.value);
+    const salt = bcrypt.genSaltSync(10);
+    this.pass = bcrypt.hashSync(this.userForm.value.password, salt);
+    this.userForm.controls.password.setValue(this.pass);
+    this.userForm.controls.confirmPassword.setValue(this.pass);
+    this.apiService.signup(this.userForm.value).subscribe(data=>{
+    });
+    this.notificationService.success('User Registered successfully');
+    this.router.navigate(['/login']);
   }
 
   validUsername(fc: FormControl){

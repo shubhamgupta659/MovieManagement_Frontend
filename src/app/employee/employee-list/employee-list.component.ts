@@ -46,9 +46,11 @@ export class EmployeeListComponent implements OnInit {
     }
 
     public setTabData(list:any){
-      this.tabs[0].count = list[0][1];
-      this.tabs[1].count = list[1][1];
-      this.tabs[2].count = list[2][1];
+      if(typeof list !== 'undefined'){
+        this.tabs[0].count = list[0][1];
+        this.tabs[1].count = list[1][1];
+        this.tabs[2].count = list[2][1];
+      }
     }
     public doFilter = (value: string) => {
       this.dataSource.filter = value.trim().toLocaleLowerCase();

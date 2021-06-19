@@ -27,6 +27,12 @@ export class CustomInterceptor implements HttpInterceptor {
                     'Authorization': 'Bearer '+ accessTokenStr
                    })
                });
+        }else if(request.url.includes('/users/user')){
+            authReq = request.clone({
+                headers: new HttpHeaders({
+                    'Accept': 'application/json'
+                   })
+               });
         }else{
             let accessTokenStr = JSON.parse(window.localStorage.getItem('token')).access_token;
             authReq = request.clone({
