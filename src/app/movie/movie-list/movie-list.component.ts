@@ -40,10 +40,6 @@ export class MovieListComponent implements OnInit {
 
     this.searchControl = new FormControl('');
     this.searchControl.valueChanges.pipe(debounceTime(500)).subscribe(data=>this.filterResults(data));
-    //.pipe(
-      //debounceTime(500),
-      //map(val => this.filterResults(val))
-    //);
     }
 
   ngOnInit() {
@@ -75,8 +71,6 @@ export class MovieListComponent implements OnInit {
     this.apiService.searchMovieByKeyword(val).subscribe(data=>{
       this.results = data;
     });
-    //console.log(this.results);
-    //return this.results;
   }
   
   public redirectToDelete = (row: any) => {
