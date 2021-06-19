@@ -1,7 +1,9 @@
 import { Injectable } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import {Employee} from '../model/employee.model';
+import { Observable, throwError } from 'rxjs';
+import { catchError, retry } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -39,8 +41,8 @@ export class EmployeeService {
 
 
 
-  getEmployees() {
-    return this.http.get(this.baseUrl + 'employee/findEmployees');
+  getEmployees() : Observable<Employee[]>{
+    return this.http.get<Employee[]>(this.baseUrl + 'employee/findEmployees');
   }
 
   addEmployee(employee: Employee) {
@@ -66,4 +68,5 @@ export class EmployeeService {
   downloadEmployeeCSV() {
     return this.http.get(this.baseUrl + 'employee/download',{responseType: 'blob'});
   }
+
 }

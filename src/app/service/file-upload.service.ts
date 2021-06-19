@@ -1,6 +1,8 @@
-import { HttpClient, HttpEvent, HttpHeaders, HttpRequest, HttpResponse } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpEvent, HttpHeaders, HttpRequest, HttpResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, throwError } from 'rxjs';
+import { catchError, retry } from 'rxjs/operators';
+import { FilesDetail } from '../model/files-detail.model';
 
 @Injectable({
   providedIn: 'root'
@@ -21,8 +23,8 @@ export class FileUploadService {
     return this.http.request(req);
   }
 
-  getFiles(): Observable<any> {
-    return this.http.get(this.baseUrl+'file/fileDetails');
+  getFiles(): Observable<FilesDetail[]> {
+    return this.http.get<FilesDetail[]>(this.baseUrl+'file/fileDetails');
   }
 
   deleteFile(id: number) {
@@ -32,4 +34,5 @@ export class FileUploadService {
   downloadFile(id: number):Observable<any> {
     return this.http.get(this.baseUrl + 'file/downloadFile/' + id, {responseType: 'blob'} );
   }
+
 }

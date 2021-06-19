@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
-import { HttpHandler, HttpEvent, HttpInterceptor, HttpHeaders, HttpRequest } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { HttpHandler, HttpEvent, HttpInterceptor, HttpHeaders, HttpRequest, HttpErrorResponse } from '@angular/common/http';
+import { Observable, throwError } from 'rxjs';
 
 import { AuthenticationService } from '../service/authentication.service';
+import { catchError, finalize, retry } from 'rxjs/operators';
 
 @Injectable()
 export class CustomInterceptor implements HttpInterceptor {
@@ -35,7 +36,16 @@ export class CustomInterceptor implements HttpInterceptor {
                    })
                });
         }
-        return next.handle(authReq);
+        return next.handle(authReq).pipe(
+            retry(2),
+            catchError((error:HttpErrorResponse)=>{
+                alert('HTTP Error : '+authReq.url);
+                return throwError(error);
+            }),
+            finalize(()=>{
+                console.log(authReq.method+' '+authReq.urlWithParams);
+            })
+          );
     }
     
 }

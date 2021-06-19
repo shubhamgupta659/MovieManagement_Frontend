@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import {Movie} from "../model/movie.model";
+import { catchError, retry, tap } from 'rxjs/operators';
+import { Observable, throwError } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
@@ -9,8 +11,10 @@ export class MovieService {
   constructor(private http: HttpClient) {}
   baseUrl: string  = 'http://localhost:8081/';
 
-  getMovies() {
-    return this.http.get(this.baseUrl + 'movies/findMovies');
+  getMovies() :Observable<Movie[]> {
+    return this.http.get<Movie[]>(this.baseUrl + 'movies/findMovies').pipe(
+      //tap(data => console.log(data)),
+    );
   }
 
   addMovies(movie: Movie) {
@@ -36,4 +40,5 @@ export class MovieService {
   searchMovieByKeyword(key:String) {
     return this.http.get(this.baseUrl + 'movies/searchByKey/'+key);
   }
+
 }
