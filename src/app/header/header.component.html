@@ -1,37 +1,58 @@
-<mat-toolbar color="primary">
-  <mat-toolbar-row class="navlist">
-    <button mat-icon-button>
-      <mat-icon (click)="sidenav.toggle()">menu</mat-icon>
-    </button>
-    <h1>Angular</h1>
-    <span class="menu-spacer"></span>
-    <div class="movie">
-      <button mat-button *ngIf="apiService.isUserLoggedIn()" [matMenuTriggerFor]="moviemenu">Movie Management</button>
-      <mat-menu #moviemenu="matMenu" x-position="below">
-        <a mat-menu-item *ngIf="apiService.isUserLoggedIn()" routerLink="/viewMovie" class="nav-link">Movie List</a>
-        <a mat-menu-item *ngIf="apiService.isUserLoggedIn()" routerLink="/addMovie" class="nav-link">Add Movie</a>
-      </mat-menu>
+<div fxLayout="column" fxFlexFill>
+  <mat-toolbar color="primary">
+    <mat-toolbar-row class="navlist">
+      <button mat-icon-button *ngIf="apiService.isUserLoggedIn()">
+        <mat-icon (click)="drawer.toggle()">menu</mat-icon>
+      </button>
+      <button mat-button *ngIf="apiService.isUserLoggedIn()" routerLink="/">
+        <mat-icon>home</mat-icon>
+      </button>
+      <span class="menu-spacer"></span>
+      <h4>Angular Practice</h4>
+      <span class="menu-spacer"></span>
+      <!-- <div class="movie">
+        <button mat-button *ngIf="apiService.isUserLoggedIn()" [matMenuTriggerFor]="moviemenu">Movie Management</button>
+        <mat-menu #moviemenu="matMenu" x-position="below">
+          <a mat-menu-item *ngIf="apiService.isUserLoggedIn()" routerLink="/viewMovie" class="nav-link">Movie List</a>
+          <a mat-menu-item *ngIf="apiService.isUserLoggedIn()" routerLink="/addMovie" class="nav-link">Add Movie</a>
+        </mat-menu>
+      </div>
+      <div class="employee">
+        <a mat-button *ngIf="apiService.isUserLoggedIn() && this.isAdmin" routerLink="/employee"
+          class="nav-link">Employee
+          Management</a>
+      </div>
+      <div class="search-upload">
+        <a mat-button *ngIf="apiService.isUserLoggedIn()" routerLink="/upload" class="nav-link">Upload</a>
+      </div> -->
+      <span class="fill-remaining-space"></span>
+        <button mat-button *ngIf="apiService.isUserLoggedIn()" [matMenuTriggerFor]="beforeMenu"><h4>Welcome {{this.userName}}</h4></button>
+        <mat-menu #beforeMenu="matMenu" x-position="below">
+          <button mat-menu-item *ngIf="apiService.isUserLoggedIn()">
+            <mat-icon>info_outline</mat-icon><span>Profile</span>
+          </button>
+          <button mat-menu-item *ngIf="apiService.isUserLoggedIn()" routerLink="/logout" class="nav-link">
+            <mat-icon>exit_to_app</mat-icon><span>Logout</span>
+          </button>
+        </mat-menu>
+        <button mat-button *ngIf="!apiService.isUserLoggedIn()" routerLink="/signup" class="nav-link"><mat-icon>input</mat-icon>SignUp</button>
+        <button mat-button *ngIf="!apiService.isUserLoggedIn()" routerLink="/login" class="nav-link"><mat-icon>power_settings_new</mat-icon>Login</button>
+    </mat-toolbar-row>
+  </mat-toolbar>
+
+  <mat-drawer-container fxFlex autosize class="background">
+    <mat-drawer #drawer>
+      <div fxLayout="column">
+        <a mat-button *ngIf="apiService.isUserLoggedIn()" routerLink="/viewMovie" class="nav-link">Movie Management</a>
+        <mat-divider></mat-divider>
+        <a mat-button *ngIf="apiService.isUserLoggedIn() && this.isAdmin" routerLink="/employee" class="nav-link">Employee Management</a>
+        <mat-divider></mat-divider>
+        <a mat-button *ngIf="apiService.isUserLoggedIn()" routerLink="/upload" class="nav-link">Upload Management</a>
+        <mat-divider></mat-divider>
+      </div>
+    </mat-drawer>
+    <div style="display: inline;">
+      <router-outlet></router-outlet>
     </div>
-    <div class="employee">
-      <a mat-button *ngIf="apiService.isUserLoggedIn() && this.isAdmin" routerLink="/employee" class="nav-link">Employee
-        Management</a>
-    </div>
-    <div class="search-upload">
-      <a mat-button *ngIf="apiService.isUserLoggedIn()" routerLink="/upload" class="nav-link">Upload</a>
-    </div>
-    <div class="nav-profile">
-      <button mat-button *ngIf="apiService.isUserLoggedIn()" [matMenuTriggerFor]="beforeMenu">Welcome
-        {{this.userName}}</button>
-      <mat-menu #beforeMenu="matMenu" x-position="below">
-        <a mat-menu-item *ngIf="apiService.isUserLoggedIn()">
-          <mat-icon>info_outline</mat-icon><span>Profile</span>
-        </a>
-        <a mat-menu-item *ngIf="apiService.isUserLoggedIn()" routerLink="/logout" class="nav-link">
-          <mat-icon>exit_to_app</mat-icon><span>Logout</span>
-        </a>
-      </mat-menu>
-      <a mat-button *ngIf="!apiService.isUserLoggedIn()" routerLink="/signup" class="nav-link">SignUp</a>
-      <a mat-button *ngIf="!apiService.isUserLoggedIn()" routerLink="/login" class="nav-link">Login</a>
-    </div>
-  </mat-toolbar-row>
-</mat-toolbar>
+  </mat-drawer-container>
+</div>

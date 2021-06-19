@@ -2,9 +2,22 @@ mat-sidenav {
     width: 280px;
     padding:15px;
 }
+
+.navbar-color {background-color: rgb(33, 150, 243); color: white;}
+.router-link-active {background-color: #414548;}
+.no-border {border-radius: 0px;}
+
+.toolbar-color {background-color: rgb(33, 150, 243); color: white;}
+.center {
+  margin-left: auto;
+  margin-right: auto;
+}
+.v-center {
+  margin-top: auto;
+  margin-bottom: auto;
+}
 .mat-drawer { 
-    background-color: #023075;
-    color:#fff
+    background-color:rgb(255, 255, 255); color: black;
 }
 .main-content {
     padding:20px;
@@ -13,10 +26,12 @@ mat-sidenav {
     flex: 1 1 auto;
 }
 .navlist {
-    background-color: #0074D9;
+    background-color:rgb(33, 150, 243); color: white;;
     position: absolute;
     width: 100%;
 }
-.nav-profile{
-    float:right !important;
-}
+.fill-remaining-space {
+    flex: 1 1 auto;
+  }
+
+.selected {background-color: gainsboro;}

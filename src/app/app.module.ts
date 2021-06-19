@@ -27,6 +27,7 @@ import { UploadComponent } from './search-upload/upload.component';
 import { CommonModule } from '@angular/common';
 import { MovieFilterPipe } from './custom-pipes/movie-filter.pipe';
 import { BoldPipe } from './custom-pipes/bold.pipe';
+import { FlexLayoutModule } from "@angular/flex-layout";
 
 
 @NgModule({
@@ -51,6 +52,7 @@ import { BoldPipe } from './custom-pipes/bold.pipe';
     BoldPipe
   ],
   imports: [
+    FlexLayoutModule,
     CommonModule,
     FormsModule,
     BrowserModule,

@@ -34,7 +34,7 @@ export class LoginComponent implements OnInit {
       this.sharedService.changeRoles(this.getDecodedAccessToken(JSON.parse(JSON.stringify(data)).access_token).authorities);
       this.router.navigate(['']);
     }, error => {
-        alert(error)
+        console.log(error);
     });
   }
 
