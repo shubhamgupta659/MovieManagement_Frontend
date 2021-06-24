@@ -4,25 +4,49 @@
 
     <div class="form-group">
       <label for="movieName">Movie Name:</label>
-      <input type="text" formControlName="movieName" placeholder="Movie Name" name="movieName" class="form-control" id="movieName">
+      <input type="text" formControlName="movieName" placeholder="Movie Name" name="movieName" class="form-control"
+        id="movieName">
     </div>
 
     <div class="form-group">
-      <label for="movieRating">Movie Rating:</label>
-      <input type="text" formControlName="rating" placeholder="Rating" name="movieRating" class="form-control" id="movieRating">
+      <label for="movieDescription">Movie Description:</label>
+      <input type="text" formControlName="description" placeholder="description" name="movieDescription"
+        class="form-control" id="movieDescription">
+    </div>
+    <div class="form-group">
+      <label for="movieGenre">Movie Genre:</label>
+      <input type="text" formControlName="genre" placeholder="Genre" name="movieGenre" class="form-control"
+        id="movieGenre">
+    </div>
+    <div class="form-group">
+      <label for="movieDirector">Movie Director:</label>
+      <input type="text" formControlName="director" placeholder="Director" name="movieDirector" class="form-control"
+        id="movieDirector">
     </div>
 
     <div class="form-group">
       <label for="movieLanguage">Movie Language:</label>
-      <input formControlName="language" placeholder="Language" name="movieLanguage" class="form-control" id="movieLanguage">
+      <input formControlName="language" placeholder="Language" name="movieLanguage" class="form-control"
+        id="movieLanguage">
     </div>
     <div class="form-group">
-      <label for="movieLanguage">Movie Year:</label>
+      <label for="movieYear">Movie Year:</label>
       <input formControlName="year" placeholder="Year" name="movieYear" class="form-control" id="movieYear">
     </div>
+    <div class="form-group">
+      <label for="moviePoster">Movie Poster:</label>
+      <input type="file" class="form-control" (change)="selectFile($event)" />
+    </div>
+    <div *ngIf="currentFile" class="progress my-3">
+      <div class="progress-bar progress-bar-info progress-bar-striped" role="progressbar"
+        attr.aria-valuenow="{{ progress }}" aria-valuemin="0" aria-valuemax="100" [ngStyle]="{ width: progress + '%' }">
+        {{ progress }}%
+      </div>
+    </div>
     <div class="buttons">
-      <div class="clear-add-button"><button mat-raised-button  color="primary" >Add Movie</button></div>
-      <div class="clear-back-button"><button mat-raised-button  color="primary" [routerLink]="['/viewMovie']" >Back</button></div>
+      <div class="clear-add-button"><button mat-raised-button color="primary">Add Movie</button></div>
+      <div class="clear-back-button"><button mat-raised-button color="primary"
+          [routerLink]="['/viewMovie']">Back</button></div>
     </div>
   </form>
 </div>

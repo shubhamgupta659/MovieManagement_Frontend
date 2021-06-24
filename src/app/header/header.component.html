@@ -43,11 +43,13 @@
   <mat-drawer-container fxFlex autosize class="background">
     <mat-drawer #drawer>
       <div fxLayout="column">
-        <a mat-button *ngIf="apiService.isUserLoggedIn()" routerLink="/viewMovie" class="nav-link">Movie Management</a>
+        <a mat-button *ngIf="apiService.isUserLoggedIn()" routerLink="/dashboard" class="nav-link">Dashboard</a>
         <mat-divider></mat-divider>
-        <a mat-button *ngIf="apiService.isUserLoggedIn() && this.isAdmin" routerLink="/employee" class="nav-link">Employee Management</a>
+        <a mat-button *ngIf="apiService.isUserLoggedIn() && this.currRole ==='MODERATOR' || this.currRole ==='ADMIN'" routerLink="/viewMovie" class="nav-link">Movie Management</a>
         <mat-divider></mat-divider>
-        <a mat-button *ngIf="apiService.isUserLoggedIn()" routerLink="/upload" class="nav-link">Upload Management</a>
+        <a mat-button *ngIf="apiService.isUserLoggedIn() && this.currRole ==='ADMIN'" routerLink="/employee" class="nav-link">Employee Management</a>
+        <mat-divider></mat-divider>
+        <a mat-button *ngIf="apiService.isUserLoggedIn() && this.currRole ==='MODERATOR' || this.currRole ==='ADMIN'" routerLink="/upload" class="nav-link">Upload Management</a>
         <mat-divider></mat-divider>
       </div>
     </mat-drawer>

@@ -6,6 +6,7 @@ export class DepartmentMapPipe implements PipeTransform {
     return [
       { id: 1, value: 'IT' },
       { id: 2, value: 'HR' },
-      { id: 3, value: 'ACCOUNTS' }][num-1].value;
+      { id: 3, value: 'ACCOUNTS' },
+      { id: 4, value: 'MODERATOR' }][num-1].value;
   }
 }

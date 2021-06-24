@@ -23,7 +23,8 @@ export class EditEmployeeComponent implements OnInit {
   departments = [
     { id: 1, value: 'IT' },
     { id: 2, value: 'HR' },
-    { id: 3, value: 'ACCOUNTS' }];
+    { id: 3, value: 'ACCOUNTS' },
+    { id: 4, value: 'MODERATOR' }];
 
   ngOnInit() {
     this.service.form.reset();

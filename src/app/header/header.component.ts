@@ -9,7 +9,7 @@ import { SharedDataService } from '../service/shared-data.service';
 })
 export class HeaderComponent implements OnInit {
   userName : String;
-  isAdmin : boolean = false;
+  currRole : String;
   constructor(private apiService: AuthenticationService,private sharedService : SharedDataService) { }
 
   ngOnInit() {
@@ -18,12 +18,17 @@ export class HeaderComponent implements OnInit {
     });
     this.sharedService.roles.subscribe(data=>{
       if(data !== null && data.indexOf('ADMIN') !== -1){
-        this.sharedService.isAdminChange(true);
+        //this.sharedService.isAdminChange(true);
+        this.currRole = 'ADMIN';
+      }else if(data !== null && data.indexOf('MODERATOR') !== -1){
+        this.currRole = 'MODERATOR';
+      }else{
+        this.currRole = 'USER';
       }
     });  
-    this.sharedService.isAdmin.subscribe(data=>{
-      this.isAdmin = data;
-    });  
+    // this.sharedService.isAdmin.subscribe(data=>{
+    //   this.isAdmin = data;
+    // });  
   }
 
 }

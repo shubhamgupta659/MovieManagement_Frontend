@@ -1,0 +1,9 @@
+<div class="serach-box">
+  <input type="search" class="mat-elevation-z2" [matAutocomplete]="auto" [formControl]="searchControl">
+  <div class="spacer"></div>
+  <mat-autocomplete #auto="matAutocomplete" class="mat-elevation-z2">
+    <mat-option *ngFor="let item of results" [value]="item">
+      <span [innerHTML]="item | bold:searchControl.value"></span>
+    </mat-option>
+  </mat-autocomplete>
+</div>

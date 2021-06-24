@@ -12,9 +12,19 @@
     </div>
 
     <div class="form-group">
-      <label for="movieRating">Movie Rating:</label>
-      <input type="text" formControlName="rating" placeholder="Rating" name="movieRating" class="form-control"
-        id="movieRating">
+      <label for="movieDescription">Movie Description:</label>
+      <input type="text" formControlName="description" placeholder="description" name="movieDescription"
+        class="form-control" id="movieDescription">
+    </div>
+    <div class="form-group">
+      <label for="movieGenre">Movie Genre:</label>
+      <input type="text" formControlName="genre" placeholder="Genre" name="movieGenre" class="form-control"
+        id="movieGenre">
+    </div>
+    <div class="form-group">
+      <label for="movieDirector">Movie Director:</label>
+      <input type="text" formControlName="director" placeholder="Director" name="movieDirector" class="form-control"
+        id="movieDirector">
     </div>
 
     <div class="form-group">
@@ -26,6 +36,29 @@
       <label for="movieLanguage">Movie Year:</label>
       <input formControlName="year" placeholder="Year" name="movieYear" class="form-control" id="movieYear">
     </div>
-    <button class="btn btn-success">Update Movie</button>
+    <div class="form-group">
+      <label for="createdBy">Created By:</label>
+      <input formControlName="createdBy" placeholder="CreatedBy" name="createdBy" class="form-control"
+        id="createdBy" disabled>
+    </div>
+    <div class="form-group">
+      <label for="createdDateTime">Created Date Time:</label>
+      <input formControlName="createdDateTime" placeholder="CreatedDateTime" name="createdDateTime" class="form-control" id="createdDateTime" disabled>
+    </div>
+    <div class="form-group">
+      <label for="moviePoster">Movie Poster:</label>
+      <input type="file" class="form-control" (change)="selectFile($event)" />
+    </div>
+    <div *ngIf="currentFile" class="progress my-3">
+      <div class="progress-bar progress-bar-info progress-bar-striped" role="progressbar"
+        attr.aria-valuenow="{{ progress }}" aria-valuemin="0" aria-valuemax="100" [ngStyle]="{ width: progress + '%' }">
+        {{ progress }}%
+      </div>
+    </div>
+    <div class="buttons">
+      <div class="clear-update-button"><button mat-raised-button color="primary">Update Movie</button></div>
+      <div class="clear-back-button"><button mat-raised-button color="primary"
+          [routerLink]="['/viewMovie']">Back</button></div>
+    </div>
   </form>
 </div>

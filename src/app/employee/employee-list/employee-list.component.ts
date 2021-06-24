@@ -6,6 +6,7 @@ import { Employee } from '../../model/employee.model';
 import { Router } from '@angular/router';
 import { NotificationService } from 'src/app/service/notification.service';
 import * as fileSaver from 'file-saver';
+import { DepartmentMapPipe } from 'src/app/custom-pipes/department-mapper';
 
 @Component({
   selector: 'employee-list',
@@ -15,10 +16,9 @@ import * as fileSaver from 'file-saver';
 
 export class EmployeeListComponent implements OnInit {
   public tabs = [
-    {name: 'IT', count : 0, color:'rgb(224,57,6)', icon:'developer_mode'},
-    {name: 'HR', count : 0, color:'rgb(224,2,119)', icon:'supervised_user_circle'},
-    {name: 'ACCOUNTS', count : 0, color:'rgb(173,7,85)', icon:'account_balance'}
+    {name: 'IT', count : 0, color:'rgb(224,57,6)', icon:'developer_mode'}
   ]
+  public newtab = new Array();
   childProp :String;
   displayedColumns: string[] = ['fullName', 'email', 'mobile', 'city', 'gender', 'department','hireDate','permanent','update','delete'];
   employeeData: any;
@@ -29,7 +29,7 @@ export class EmployeeListComponent implements OnInit {
   public selectedModule: String = 'IT';
   
 
-  constructor(private service: EmployeeService,private notificationService: NotificationService,private router: Router) { }
+  constructor(private service: EmployeeService,private notificationService: NotificationService,private router: Router,private departmentFilter : DepartmentMapPipe) { }
 
   ngOnInit() {
     this.service.getEmployees().subscribe(
@@ -45,13 +45,14 @@ export class EmployeeListComponent implements OnInit {
         });
     }
 
-    public setTabData(list:any){
-      if(typeof list !== 'undefined'){
-        this.tabs[0].count = list[0][1];
-        this.tabs[1].count = list[1][1];
-        this.tabs[2].count = list[2][1];
+    public setTabData(list: any) {
+      for (var i = 0; i < list.length; i++) {
+        var deptName = this.departmentFilter.transform(list[i][0]);
+        const tab = { 'name': deptName, 'count': list[i][1], 'color': 'rgb(33, 150, 243)', 'icon': 'developer_mode' };
+        this.newtab.push(tab);
       }
     }
+
     public doFilter = (value: string) => {
       this.dataSource.filter = value.trim().toLocaleLowerCase();
     }

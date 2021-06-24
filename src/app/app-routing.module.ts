@@ -13,12 +13,14 @@ import { EditEmployeeComponent } from './employee/edit-employee/edit-employee.co
 import { EmployeeResolver } from './service/employee-resolver.service';
 import { EmployeeComponent } from './employee/employee.component';
 import { UploadComponent } from './search-upload/upload.component';
+import { MovieDashboardComponent } from './movie/movie-dashboard/movie-dashboard.component';
 
 const routes: Routes = [
-  { path:'', component: MovieListComponent, canActivate:[AuthGaurdService], data:{role:'USER'}},
-  { path:'viewMovie', component: MovieListComponent, canActivate:[AuthGaurdService], data:{role:'USER'}},
-  { path:'addMovie', component: AddMovieComponent, canActivate:[AuthGaurdService], data:{role:'USER'}},
-  { path:'editMovie', component: EditMovieComponent, canActivate:[AuthGaurdService], data:{role:'USER'}},
+  { path:'', component: MovieDashboardComponent, canActivate:[AuthGaurdService], data:{role:'USER'}},
+  { path:'dashboard', component: MovieDashboardComponent, canActivate:[AuthGaurdService], data:{role:'USER'}},
+  { path:'viewMovie', component: MovieListComponent, canActivate:[AuthGaurdService], data:{role:'MODERATOR'}},
+  { path:'addMovie', component: AddMovieComponent, canActivate:[AuthGaurdService], data:{role:'MODERATOR'}},
+  { path:'editMovie', component: EditMovieComponent, canActivate:[AuthGaurdService], data:{role:'MODERATOR'}},
   { path:'employee', component: EmployeeComponent, canActivate:[AuthGaurdService], data:{role:'ADMIN'},
     children:[
       { path:'', component: EmployeeListComponent},
@@ -26,7 +28,7 @@ const routes: Routes = [
       { path:'editEmployee/:id', component: EditEmployeeComponent},
       { path:'addEmployee', component: AddEmployeeComponent},
     ]},
-  { path:'upload', component: UploadComponent,canActivate:[AuthGaurdService], data:{role:'USER'}},
+  { path:'upload', component: UploadComponent,canActivate:[AuthGaurdService], data:{role:'MODERATOR'}},
   { path:'signup', component: SignupComponent},
   { path:'login', component: LoginComponent},
   { path: 'logout', component: LogoutComponent },
