@@ -14,10 +14,17 @@ import { EmployeeResolver } from './service/employee-resolver.service';
 import { EmployeeComponent } from './employee/employee.component';
 import { UploadComponent } from './search-upload/upload.component';
 import { MovieDashboardComponent } from './movie/movie-dashboard/movie-dashboard.component';
+import { LatestPicksComponent } from './movie/movie-dashboard/latest-picks/latest-picks.component';
+import { MovieDetailComponent } from './movie/movie-dashboard/movie-detail/movie-detail.component';
 
 const routes: Routes = [
   { path:'', component: MovieDashboardComponent, canActivate:[AuthGaurdService], data:{role:'USER'}},
-  { path:'dashboard', component: MovieDashboardComponent, canActivate:[AuthGaurdService], data:{role:'USER'}},
+  { path:'dashboard', component: MovieDashboardComponent, canActivate:[AuthGaurdService], data:{role:'USER'},
+  children:[
+    { path:'', component: MovieDashboardComponent},
+    { path:'latestPicks', component: LatestPicksComponent},
+    { path:'movieDetail', component: MovieDetailComponent}
+  ]},
   { path:'viewMovie', component: MovieListComponent, canActivate:[AuthGaurdService], data:{role:'MODERATOR'}},
   { path:'addMovie', component: AddMovieComponent, canActivate:[AuthGaurdService], data:{role:'MODERATOR'}},
   { path:'editMovie', component: EditMovieComponent, canActivate:[AuthGaurdService], data:{role:'MODERATOR'}},

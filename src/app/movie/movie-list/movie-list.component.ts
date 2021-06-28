@@ -30,7 +30,7 @@ export class MovieListComponent implements OnInit {
   public tabs = [
     { name: 'HINDI', count: 0, color: 'rgb(224,57,6)', icon: 'developer_mode' }
   ];
-  displayedColumns: string[] = ['movieId', 'movieName', 'description', 'genre','director','language','year','createdBy','createdDateTime', 'update', 'delete'];
+  displayedColumns: string[] = ['moviePoster', 'movieName', 'description', 'genre','director','language','year','createdBy','createdDateTime', 'update', 'delete'];
   public newtab = new Array();
   public selectedModule: String = '';
   public dataSource: MatTableDataSource<Movie>;
@@ -40,9 +40,8 @@ export class MovieListComponent implements OnInit {
   constructor(private router: Router, private apiService: MovieService,
     private sharedDataService: SharedDataService, private notificationService: NotificationService,
     private moviefilterPipe: MovieFilterPipe) {
-
     this.searchControl = new FormControl('');
-    this.searchControl.valueChanges.pipe(debounceTime(500)).subscribe(data=>this.filterResults(data));
+    this.searchControl.valueChanges.pipe(debounceTime(500)).subscribe(data=>this.filterResults(typeof data === 'object' ? data[0] : data));
     }
 
   ngOnInit() {
@@ -70,9 +69,15 @@ export class MovieListComponent implements OnInit {
     }
   }
   
-  private filterResults(val: string){
+  private filterResults(val: any){
     this.apiService.searchMovieByKeyword(val).subscribe(data=>{
       this.results = data;
+    });
+  }
+
+  private getMovieById(data:any){
+    this.apiService.getMovieById(data[0]).subscribe(data=>{
+      console.log(data);
     });
   }
   

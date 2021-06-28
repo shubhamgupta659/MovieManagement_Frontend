@@ -30,6 +30,9 @@ import { BoldPipe } from './custom-pipes/bold.pipe';
 import { FlexLayoutModule } from "@angular/flex-layout";
 import { BgColorDirective } from './custom-directive/bg-color.directive';
 import { MovieDashboardComponent } from './movie/movie-dashboard/movie-dashboard.component';
+import { ImagePipe } from './custom-pipes/image.pipe';
+import { LatestPicksComponent } from './movie/movie-dashboard/latest-picks/latest-picks.component';
+import { MovieDetailComponent } from './movie/movie-dashboard/movie-detail/movie-detail.component';
 
 
 @NgModule({
@@ -53,7 +56,10 @@ import { MovieDashboardComponent } from './movie/movie-dashboard/movie-dashboard
     MovieFilterPipe,
     BoldPipe,
     BgColorDirective,
-    MovieDashboardComponent
+    MovieDashboardComponent,
+    ImagePipe,
+    LatestPicksComponent,
+    MovieDetailComponent
   ],
   imports: [
     FlexLayoutModule,
@@ -67,7 +73,7 @@ import { MovieDashboardComponent } from './movie/movie-dashboard/movie-dashboard
     MaterialModule
   ],
   exports: [MovieFilterPipe,BoldPipe],
-  providers: [DepartmentMapPipe,MovieFilterPipe,BoldPipe,EmployeeService,{provide: HTTP_INTERCEPTORS, useClass: CustomInterceptor, multi: true },],
+  providers: [ImagePipe,DepartmentMapPipe,MovieFilterPipe,BoldPipe,EmployeeService,{provide: HTTP_INTERCEPTORS, useClass: CustomInterceptor, multi: true },],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

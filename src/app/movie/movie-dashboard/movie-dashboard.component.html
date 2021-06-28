@@ -2,8 +2,10 @@
   <input type="search" class="mat-elevation-z2" [matAutocomplete]="auto" [formControl]="searchControl">
   <div class="spacer"></div>
   <mat-autocomplete #auto="matAutocomplete" class="mat-elevation-z2">
-    <mat-option *ngFor="let item of results" [value]="item">
+    <mat-option *ngFor="let item of results" [value]="item[7]" (click)="getMovieById(item)">
       <span [innerHTML]="item | bold:searchControl.value"></span>
     </mat-option>
   </mat-autocomplete>
 </div>
+<latest-picks *ngIf="!this.hideShowLatestPicks" [value]="this.latestPicks" (movieClickEvent)="movieFunc($event)"></latest-picks>
+<movie-detail *ngIf="this.hideShowLatestPicks" [value]="this.movieDetail"></movie-detail>

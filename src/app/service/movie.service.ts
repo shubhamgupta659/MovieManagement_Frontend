@@ -50,7 +50,7 @@ export class MovieService {
       //tap(data => console.log(data)),
     );
   }
-
+  
   getMovieById(id: number) {
     return this.http.get(this.baseUrl + 'movies/findMovies/' + id);
   }
@@ -65,6 +65,10 @@ export class MovieService {
 
   searchMovieByKeyword(key: String) {
     return this.http.get(this.baseUrl + 'movies/searchByKey/' + key);
+  }
+
+  getLatestPicks() {
+    return this.http.get(this.baseUrl + 'movies/latestPicks');
   }
 
 }

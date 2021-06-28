@@ -9,5 +9,6 @@ export class Movie {
     year:number;
     createdBy:string;
     createdDateTime:string;
+    dbFiles:any[];
   
   }

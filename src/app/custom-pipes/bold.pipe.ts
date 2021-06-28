@@ -5,11 +5,13 @@ import { Pipe, PipeTransform } from '@angular/core';
 })
 export class BoldPipe implements PipeTransform {
 
-  transform(text: string, search: string, patter): string {
+  transform(text: any, search: any, patter): string {
     if (!text || !search) {
-      return text;
+      return text[7]+' ('+text[8]+')';
     }
-
+    if(typeof search === 'object'){
+      search = search[7];
+    }
     // allow searching against any word
     const searchRegex = search
       .split(' ')
@@ -18,9 +20,9 @@ export class BoldPipe implements PipeTransform {
       .join('|');
     
     const regex = new RegExp(searchRegex, 'gi');
-    const bolded = text.replace(regex, match => `</b>${match}<b>`);
+    const bolded = text[7].replace(regex, match => `</b>${match}<b>`);
   
-    return `<b>${bolded}</b>`;
+    return `<b>${bolded}</b>`+' ('+text[8]+')';
   }
 }
 

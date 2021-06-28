@@ -1,0 +1,12 @@
+.detail-container{
+    margin-top: 50px;
+}
+.sub-card{
+    margin: 6px 0px;
+}
+
+.movie-image{
+    width:300px;
+    height:370px;
+    margin-left: 10px;
+}

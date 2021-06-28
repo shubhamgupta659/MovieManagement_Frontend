@@ -1,0 +1,31 @@
+<div class="container detail-container">
+  <div class="row">
+    <div class="col-sm-4">
+      <mat-card class="example-card">
+        <img mat-card-image src="{{value.dbFiles[0].data | image}}" alt="movie poster" class="movie-image" style="margin-top: 10px;margin-bottom: 10px;">
+      </mat-card>
+    </div>
+    <div class="col-sm-8">
+      <mat-card class="example-card">
+        <mat-card class="sub-card">
+          <P><b>Name : </b>{{value.movieName}}</P>
+        </mat-card>
+        <mat-card class="sub-card">
+          <P><b>Year : </b>{{value.year}}</P>
+        </mat-card>
+        <mat-card class="sub-card">
+          <P><b>Genre : </b>{{value.genre}}</P>
+        </mat-card>
+        <mat-card class="sub-card">
+          <P><b>Director : </b>{{value.director}}</P>
+        </mat-card>
+        <mat-card class="sub-card">
+          <P><b>Language : </b>{{value.language}}</P>
+        </mat-card>
+        <mat-card class="sub-card">
+          <p><b>Description : </b>{{value.description}}</p>
+        </mat-card>
+      </mat-card>
+    </div>
+  </div>
+</div>
