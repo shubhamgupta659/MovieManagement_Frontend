@@ -33,6 +33,7 @@ import { MovieDashboardComponent } from './movie/movie-dashboard/movie-dashboard
 import { ImagePipe } from './custom-pipes/image.pipe';
 import { LatestPicksComponent } from './movie/movie-dashboard/latest-picks/latest-picks.component';
 import { MovieDetailComponent } from './movie/movie-dashboard/movie-detail/movie-detail.component';
+import { StarRatingComponent } from './resuable-components/star-rating/star-rating.component';
 
 
 @NgModule({
@@ -59,7 +60,8 @@ import { MovieDetailComponent } from './movie/movie-dashboard/movie-detail/movie
     MovieDashboardComponent,
     ImagePipe,
     LatestPicksComponent,
-    MovieDetailComponent
+    MovieDetailComponent,
+    StarRatingComponent
   ],
   imports: [
     FlexLayoutModule,

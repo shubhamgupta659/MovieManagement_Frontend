@@ -71,4 +71,12 @@ export class MovieService {
     return this.http.get(this.baseUrl + 'movies/latestPicks');
   }
 
+  getMovieRatingForCurrentUser(id:number) {
+    return this.http.get(this.baseUrl + 'movies/ratingForUser/'+id);
+  }
+
+  saveMovieDetailForCurrentUser(payload: any) {
+    return this.http.post(this.baseUrl + 'movies/saveRatingForUser',payload);
+  }
+
 }

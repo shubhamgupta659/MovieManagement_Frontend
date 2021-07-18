@@ -1,16 +1,13 @@
 <div class="movie-container">
-  <div *ngFor="let item of value">
+  <div *ngFor="let item of value;index as i">
     <mat-card class="example-card">
       <mat-card-header>
-        <div mat-card-avatar class="example-header-image"><mat-icon>add</mat-icon></div>
+        <div mat-card-avatar class="add"><mat-icon>add</mat-icon></div>
+        <!-- <div *ngIf="" mat-card-avatar class="added"><mat-icon>done</mat-icon></div> -->
         <mat-card-title class="movie-title" (click)="showMovieDetails(item.movieId)">{{item.movieName}}</mat-card-title>
         <mat-card-subtitle>{{item.year}}</mat-card-subtitle>
       </mat-card-header>
       <img mat-card-image src="{{item.dbFiles[0].data | image}}" alt="Photo of a Shiba Inu" style="width:240px;height:280px;" (click)="showMovieDetails(item.movieId)">
-      <mat-card-actions>
-        <button mat-button>LIKE</button>
-        <button mat-button>SHARE</button>
-      </mat-card-actions>
     </mat-card>
   </div>
 </div>

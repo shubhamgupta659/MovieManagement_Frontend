@@ -2,7 +2,12 @@
   <div class="row">
     <div class="col-sm-4">
       <mat-card class="example-card">
+        <div *ngIf="!userMovieInfo.watchListed" mat-card-avatar class="add" (click)="watchToggle()"><mat-icon>add</mat-icon></div>
+        <div *ngIf="userMovieInfo.watchListed" mat-card-avatar class="added" (click)="watchToggle()"><mat-icon>done</mat-icon></div>
         <img mat-card-image src="{{value.dbFiles[0].data | image}}" alt="movie poster" class="movie-image" style="margin-top: 10px;margin-bottom: 10px;">
+        <mat-card class="rating-card">
+          <star-rating class="star-rating" [rating]="userMovieInfo.rating"  [starCount]="starCount" [color]="starColor" (ratingUpdated)="onRatingChanged($event)"></star-rating>
+        </mat-card>
       </mat-card>
     </div>
     <div class="col-sm-8">

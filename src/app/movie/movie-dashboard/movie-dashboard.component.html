@@ -8,4 +8,4 @@
   </mat-autocomplete>
 </div>
 <latest-picks *ngIf="!this.hideShowLatestPicks" [value]="this.latestPicks" (movieClickEvent)="movieFunc($event)"></latest-picks>
-<movie-detail *ngIf="this.hideShowLatestPicks" [value]="this.movieDetail"></movie-detail>
+<movie-detail *ngIf="this.hideShowLatestPicks" [value]="this.movieDetail" [userMovieInfo]="this.userMovieInfo"></movie-detail>

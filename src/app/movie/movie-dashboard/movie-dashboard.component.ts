@@ -14,6 +14,7 @@ export class MovieDashboardComponent implements OnInit {
   searchControl: FormControl;
   filteredResults$: Observable<string[]>;
   results: any;
+  userMovieInfo:any;
   movieDetail: any;
   latestPicks: any; 
   hideShowLatestPicks :boolean = false;
@@ -37,14 +38,21 @@ export class MovieDashboardComponent implements OnInit {
   }
 
   private getMovieById(data: any) {
+    this.apiService.getMovieRatingForCurrentUser(data[0]).subscribe(data=>{
+      this.userMovieInfo = data;
+    });
     this.apiService.getMovieById(data[0]).subscribe(data => {
       this.movieDetail = data;
       this.hideShowLatestPicks = true;
     });
   }
 
-  movieFunc(data:string){
-    this.apiService.getMovieById(+data).subscribe(data => {
+  movieFunc(val:string){
+    this.apiService.getMovieRatingForCurrentUser(+val).subscribe(data=>{
+      this.userMovieInfo = data;
+      console.log(data);
+    });
+    this.apiService.getMovieById(+val).subscribe(data => {
       this.movieDetail = data;
       this.hideShowLatestPicks = true;
     });
