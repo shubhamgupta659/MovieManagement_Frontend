@@ -5,7 +5,6 @@ import { LogoutComponent } from './logout/logout.component';
 import { MovieListComponent } from './movie/movie-list/movie-list.component';
 import { AddMovieComponent } from './movie/add-movie/add-movie.component';
 import { EditMovieComponent } from './movie/edit-movie/edit-movie.component';
-import { SignupComponent } from './signup/signup.component';
 import { AuthGaurdService } from './service/auth-gaurd.service';
 import { AddEmployeeComponent} from './employee/add-employee/add-employee.component';
 import { EmployeeListComponent } from './employee/employee-list/employee-list.component';
@@ -16,6 +15,7 @@ import { UploadComponent } from './search-upload/upload.component';
 import { MovieDashboardComponent } from './movie/movie-dashboard/movie-dashboard.component';
 import { LatestPicksComponent } from './movie/movie-dashboard/latest-picks/latest-picks.component';
 import { MovieDetailComponent } from './movie/movie-dashboard/movie-detail/movie-detail.component';
+import { SignupComponent } from './signup/signup.component';
 
 const routes: Routes = [
   { path:'', component: MovieDashboardComponent, canActivate:[AuthGaurdService], data:{role:'USER'}},

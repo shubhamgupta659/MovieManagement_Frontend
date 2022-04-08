@@ -14,7 +14,6 @@ import { CustomInterceptor } from './interceptor/custom.interceptor';
 import { MovieListComponent } from './movie/movie-list/movie-list.component';
 import { AddMovieComponent } from './movie/add-movie/add-movie.component';
 import { EditMovieComponent } from './movie/edit-movie/edit-movie.component';
-import { SignupComponent } from './signup/signup.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { EmployeeService } from './service/employee.service';
 import { EmployeeListComponent } from './employee/employee-list/employee-list.component';
@@ -34,6 +33,7 @@ import { ImagePipe } from './custom-pipes/image.pipe';
 import { LatestPicksComponent } from './movie/movie-dashboard/latest-picks/latest-picks.component';
 import { MovieDetailComponent } from './movie/movie-dashboard/movie-detail/movie-detail.component';
 import { StarRatingComponent } from './resuable-components/star-rating/star-rating.component';
+import { SignupComponent } from './signup/signup.component';
 
 
 @NgModule({

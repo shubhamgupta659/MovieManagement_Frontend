@@ -31,7 +31,7 @@
           </mat-radio-group>
         </div>
         <mat-form-field>
-          <mat-select formControlName="department" placeholder="Department">
+          <mat-select formControlName="department">
             <ng-container *ngFor="let department of departments">
               <mat-option value="{{department.id}}">{{department.value}}</mat-option>
             </ng-container>

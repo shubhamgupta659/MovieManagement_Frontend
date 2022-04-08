@@ -17,6 +17,7 @@ import { DepartmentMapPipe } from 'src/app/custom-pipes/department-mapper';
 export class EditEmployeeComponent implements OnInit {
   employee :Employee;
   form: FormGroup;
+  selectedDept:any;
 
   constructor(private service: EmployeeService, private notificationService: NotificationService,private router: Router, private route:ActivatedRoute) { }
 
@@ -31,8 +32,9 @@ export class EditEmployeeComponent implements OnInit {
     this.service.initializeFormGroup();
     const id = +this.route.snapshot.paramMap.get('id');
     this.service.getEmployeeById(id)
-    .subscribe( data => {
+    .subscribe( data=> {
       this.service.form.patchValue(data);
+      //this.selectedDept = this.departments[2];
       //this.service.form.controls.department.setValue(this.deptPipe.transform(this.service.form.get('hireDate').value));
       //this.service.form.controls.department.setValue(2);
       this.service.form.controls.hireDate.setValue(new Date(this.service.form.get('hireDate').value));
