@@ -2,6 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { debounceTime } from 'rxjs/operators';
+import { SharedDataService } from 'src/app/service/shared-data.service';
 import { MovieService } from '../../service/movie.service';
 
 @Component({
@@ -18,17 +19,22 @@ export class MovieDashboardComponent implements OnInit {
   movieDetail: any;
   latestPicks: any; 
   hideShowLatestPicks :boolean = false;
+  userName : String;
 
-  constructor(private apiService: MovieService) {
+  constructor(private apiService: MovieService,private sharedService : SharedDataService) {
     this.searchControl = new FormControl('');
     this.searchControl.valueChanges.pipe(debounceTime(500)).subscribe(data => this.filterResults(typeof data === 'object' ? data[0] : data));
   }
 
   ngOnInit() {
     this.hideShowLatestPicks = false;
-    this.apiService.getLatestPicks().subscribe(data => {
-      this.latestPicks = data;
+    this.sharedService.user.subscribe(data=>{
+      this.userName = data;
+      this.apiService.getLatestPicks(this.userName).subscribe(data => {
+        this.latestPicks = data;
+      });
     });
+    
   }
 
   private filterResults(val: any) {

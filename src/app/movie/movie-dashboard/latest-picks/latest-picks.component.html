@@ -1,9 +1,9 @@
 <div class="movie-container">
-  <div *ngFor="let item of value;index as i">
+  <div *ngFor="let item of value;index as ind">
     <mat-card class="example-card">
       <mat-card-header>
-        <div mat-card-avatar class="add"><mat-icon>add</mat-icon></div>
-        <!-- <div *ngIf="" mat-card-avatar class="added"><mat-icon>done</mat-icon></div> -->
+        <div *ngIf="!item.movieWatchListed" mat-card-avatar class="add" (click)="watchToggle(ind)"><mat-icon>add</mat-icon></div>
+        <div *ngIf="item.movieWatchListed" mat-card-avatar class="added" (click)="watchToggle(ind)"><mat-icon>done</mat-icon></div>
         <mat-card-title class="movie-title" (click)="showMovieDetails(item.movieId)">{{item.movieName}}</mat-card-title>
         <mat-card-subtitle>{{item.year}}</mat-card-subtitle>
       </mat-card-header>

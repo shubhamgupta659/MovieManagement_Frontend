@@ -67,8 +67,8 @@ export class MovieService {
     return this.http.get(this.baseUrl + 'movies/searchByKey/' + key);
   }
 
-  getLatestPicks() {
-    return this.http.get(this.baseUrl + 'movies/latestPicks');
+  getLatestPicks(username:String) {
+    return this.http.get(this.baseUrl + 'movies/latestPicks/'+ username);
   }
 
   getMovieRatingForCurrentUser(id:number) {
