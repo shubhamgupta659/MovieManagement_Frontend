@@ -18,6 +18,7 @@ export class MovieDashboardComponent implements OnInit {
   userMovieInfo:any;
   movieDetail: any;
   latestPicks: any; 
+  popularPicks: any;
   hideShowLatestPicks :boolean = false;
   userName : String;
 
@@ -32,6 +33,9 @@ export class MovieDashboardComponent implements OnInit {
       this.userName = data;
       this.apiService.getLatestPicks(this.userName).subscribe(data => {
         this.latestPicks = data;
+      });
+      this.apiService.getPopularPicks(this.userName).subscribe(data => {
+        this.popularPicks = data;
       });
     });
     

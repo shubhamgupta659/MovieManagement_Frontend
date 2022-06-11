@@ -20,7 +20,7 @@ import { EmployeeListComponent } from './employee/employee-list/employee-list.co
 import { EditEmployeeComponent } from './employee/edit-employee/edit-employee.component';
 import { AddEmployeeComponent } from './employee/add-employee/add-employee.component';
 import { DepartmentMapPipe } from './custom-pipes/department-mapper';
-import { CustomCounterBlocksComponent } from './resuable-components/custom-counter-blocks/custom-counter-blocks.component';
+import { CustomCounterBlocksComponent } from './reusable-components/custom-counter-blocks/custom-counter-blocks.component';
 import { EmployeeComponent } from './employee/employee.component';
 import { UploadComponent } from './search-upload/upload.component';
 import { CommonModule } from '@angular/common';
@@ -32,9 +32,11 @@ import { MovieDashboardComponent } from './movie/movie-dashboard/movie-dashboard
 import { ImagePipe } from './custom-pipes/image.pipe';
 import { LatestPicksComponent } from './movie/movie-dashboard/latest-picks/latest-picks.component';
 import { MovieDetailComponent } from './movie/movie-dashboard/movie-detail/movie-detail.component';
-import { StarRatingComponent } from './resuable-components/star-rating/star-rating.component';
+import { StarRatingComponent } from './reusable-components/star-rating/star-rating.component';
 import { SignupComponent } from './signup/signup.component';
-
+import { MovieDataviewComponent } from './movie/movie-dataview/movie-dataview.component';
+import { ProductService } from './movie/movie-dataview/productservice';
+import { CustomDataviewComponent } from './reusable-components/custom-dataview/custom-dataview.component';
 
 @NgModule({
   declarations: [
@@ -61,7 +63,9 @@ import { SignupComponent } from './signup/signup.component';
     ImagePipe,
     LatestPicksComponent,
     MovieDetailComponent,
-    StarRatingComponent
+    StarRatingComponent,
+    MovieDataviewComponent,
+    CustomDataviewComponent
   ],
   imports: [
     FlexLayoutModule,
@@ -75,7 +79,7 @@ import { SignupComponent } from './signup/signup.component';
     MaterialModule
   ],
   exports: [MovieFilterPipe,BoldPipe],
-  providers: [ImagePipe,DepartmentMapPipe,MovieFilterPipe,BoldPipe,EmployeeService,{provide: HTTP_INTERCEPTORS, useClass: CustomInterceptor, multi: true },],
+  providers: [ImagePipe,DepartmentMapPipe,MovieFilterPipe,BoldPipe,EmployeeService,ProductService,{provide: HTTP_INTERCEPTORS, useClass: CustomInterceptor, multi: true },],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -16,6 +16,7 @@ import { MovieDashboardComponent } from './movie/movie-dashboard/movie-dashboard
 import { LatestPicksComponent } from './movie/movie-dashboard/latest-picks/latest-picks.component';
 import { MovieDetailComponent } from './movie/movie-dashboard/movie-detail/movie-detail.component';
 import { SignupComponent } from './signup/signup.component';
+import { MovieDataviewComponent } from './movie/movie-dataview/movie-dataview.component';
 
 const routes: Routes = [
   { path:'', component: MovieDashboardComponent, canActivate:[AuthGaurdService], data:{role:'USER'}},
@@ -28,6 +29,7 @@ const routes: Routes = [
   { path:'viewMovie', component: MovieListComponent, canActivate:[AuthGaurdService], data:{role:'MODERATOR'}},
   { path:'addMovie', component: AddMovieComponent, canActivate:[AuthGaurdService], data:{role:'MODERATOR'}},
   { path:'editMovie', component: EditMovieComponent, canActivate:[AuthGaurdService], data:{role:'MODERATOR'}},
+  { path:'dataViewMovie', component: MovieDataviewComponent, canActivate:[AuthGaurdService], data:{role:'MODERATOR'}},
   { path:'employee', component: EmployeeComponent, canActivate:[AuthGaurdService], data:{role:'ADMIN'},
     children:[
       { path:'', component: EmployeeListComponent},

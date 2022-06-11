@@ -7,5 +7,15 @@
     </mat-option>
   </mat-autocomplete>
 </div>
-<latest-picks *ngIf="!this.hideShowLatestPicks" [value]="this.latestPicks" (movieClickEvent)="movieFunc($event)"></latest-picks>
+<div *ngIf="!this.hideShowLatestPicks">
+  <div>
+    <div class="pick-title"><h4>Latest Picks</h4></div>
+    <latest-picks [value]="this.latestPicks" (movieClickEvent)="movieFunc($event)"></latest-picks>
+  </div>
+  <div>
+    <div class="pick-title"><h4>Popular Picks</h4></div>
+    <latest-picks [value]="this.popularPicks" (movieClickEvent)="movieFunc($event)"></latest-picks>
+  </div>
+</div>
+
 <movie-detail *ngIf="this.hideShowLatestPicks" [value]="this.movieDetail" [userMovieInfo]="this.userMovieInfo"></movie-detail>

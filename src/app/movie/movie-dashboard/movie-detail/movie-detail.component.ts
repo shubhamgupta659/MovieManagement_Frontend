@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { StarRatingColor } from 'src/app/resuable-components/star-rating/star-rating.component';
+import { StarRatingColor } from 'src/app/reusable-components/star-rating/star-rating.component';
 import { MovieService } from 'src/app/service/movie.service';
 
 @Component({

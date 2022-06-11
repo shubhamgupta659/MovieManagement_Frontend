@@ -51,6 +51,8 @@
         <mat-divider></mat-divider>
         <a mat-button *ngIf="apiService.isUserLoggedIn() && this.currRole ==='MODERATOR' || this.currRole ==='ADMIN'" routerLink="/upload" class="nav-link">Upload Management</a>
         <mat-divider></mat-divider>
+        <a mat-button *ngIf="apiService.isUserLoggedIn() && this.currRole ==='MODERATOR' || this.currRole ==='ADMIN'" routerLink="/dataViewMovie" class="nav-link">Movie Data View</a>
+        <mat-divider></mat-divider>
       </div>
     </mat-drawer>
     <div style="display: inline;">
